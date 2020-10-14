@@ -1,0 +1,43 @@
+{% extends 'gsmapp/adminpanel/admin_base.html' %}
+{% block title %} Subscribe Email List| GSM Riders {% endblock %}
+{% load static %}
+{% block content %}
+ 
+
+<div class="kt-portlet">
+    <div class="kt-portlet__body">
+        {% if messages %}
+            <div class="messages">
+                {% for message in messages %}
+                    <p{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</p>
+                {% endfor %}
+            </div>
+        {% endif %}
+        <div class="kt-widget kt-widget--user-profile-3">
+            <table class="table table-striped table-bordered" style="width:100%">
+                <thead>
+                    <tr>
+                        <th class="text-center">SL</th>
+                        <th>Subscribe Email</th>  
+                        <th>Added Date</th> 
+                        <th>Status</th> 
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for data in email_list %}
+                        <tr>
+                            <td class="text-center"> {{ forloop.counter }}</td>
+                            <td> {{ data.subscribe_email }} </td> 
+                            <td> {{ data.added_date }}</td>
+                            <td> {% if data.status %} Active {% else %} <span style="color:red">Inactive</span>{% endif %} </td> 
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+
+        </div>
+
+    </div>
+</div>
+
+{% endblock %}

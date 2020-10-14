@@ -1,0 +1,606 @@
+<!doctype html>
+<html class="no-js" lang="en">
+
+<head>
+    {% load static %}
+    {% load custom_tags %}
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <meta name="google-site-verification" content="M1hmb9WVwcpZdaTFgxI45gMNVtNtOqhhpwet7PMsIRo" />
+
+    <link rel=icon type="image/ico" href="https://gsmriders.com/static/gsmapp/images/GSMRIDERS-01.png"/>
+    <!-- Document Title -->
+    <title> {% block title %} {% endblock %}</title>
+    <meta property="og:image" content="https://gsmriders.com{% block ogimage %}{% endblock %}">
+    <meta property="og:title" content="{% block ogtitle %}{% endblock %}">
+    <meta property="og:description" content="{% block ogdescription %}{% endblock %}">
+    <meta name="keywords" content="{% block meta_title %} {% endblock %}">
+    <meta name="description" content="{% block meta_description %} {% endblock %}">
+    <meta name="msvalidate.01" content="92BB6C1F82310EB542CAD27CE96F6266" />
+    <!-- Favicon -->
+    <link rel="icon" href="/static/gsmapp/images/Gsm-Icon-2.png" type="image/x-icon">
+    <link rel="stylesheet" type="text/css" href="{% static 'gsmapp/rs-plugin/css/settings.css' %}" media="screen" />
+
+    <!-- StyleSheets -->
+    <link rel="stylesheet" href="{% static 'gsmapp/css/ionicons.min.css' %}">
+    <link rel="stylesheet" href="{% static 'gsmapp/css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'gsmapp/css/font-awesome.min.css' %}">
+    <link rel="stylesheet" href="{% static 'gsmapp/css/main.css' %}">
+    <link rel="stylesheet" href="{% static 'gsmapp/css/style.css' %}">
+    <link rel="stylesheet" href="{% static 'gsmapp/css/responsive.css' %}">
+
+    <!-- Fonts Online -->
+    <!--<link href="https://fonts.googleapis.com/css?family=Lato:100,100i,300,300i,400,400i,700,700i,900,900i" rel="stylesheet">-->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:ital,wght@0,300;0,400;0,700;1,300&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+
+    <!-- JavaScripts -->
+    <script src="{% static 'gsmapp/js/vendors/modernizr.js' %}"></script>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-170503489-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-170503489-1');
+</script>
+
+</head>
+
+<body>
+
+    
+
+    <!-- Page Wrapper -->
+    <div id="wrap" class="layout-1">
+
+        <!-- Header -->
+        <header>
+            <!-- Nav -->
+            <nav class="navbar ownmenu">
+                <div class="container" style="padding: 0;">
+                    
+                    <div class="content-wrapper">
+                        <div class="logo">
+                            <a href="/"><img src="{% static 'gsmapp/images/GSMRIDERS-01.png' %}" alt="logo" style="width:200px"></a>
+                        </div>
+                        <div id="top-search">
+                            <div class="search-area">
+                                 <input type="search" placeholder="Search entire store here..." class="search-input" id="search-input">
+                                 <button class="submit" type="submit"><i class="icon-magnifier"></i></button>
+                             </div>
+                             <div class="top-search-content">
+                                 <div class="row">
+                                     <div class="col-md-4 col-sm-12 r-bg">
+                                         <div class="reviews" id="reviews">
+                                             <div class="top-title">Reviews</div>
+                                             
+                                             <a href="#">
+                                                 <div class="single-item">
+                                                       <img src="/static/gsmapp/images/search-reviews.jpg" alt="Review Image">
+                                                      <div class="title">Samsung Galaxy M21 hands-on-review</div>
+                                                 </div>
+                                             </a>
+                                             <a href="#">
+                                                 <div class="single-item">
+                                                       <img src="/static/gsmapp/images/search-reviews.jpg" alt="Review Image">
+                                                       <div class="title">Samsung Galaxy M21 hands-on-review</div>
+                                                 </div>
+                                             </a>
+                                             <a href="#">
+                                                 <div class="single-item">
+                                                       <img src="/static/gsmapp/images/search-reviews.jpg" alt="Review Image">
+                                                       <div class="title">Samsung Galaxy M21 hands-on-review</div>
+                                                 </div>
+                                             </a>
+                                             <a href="#" class="more">more review results <i class="fa fa-right-arrow"></i></a>
+                                         </div>
+ 
+                                     </div>
+                                     <div class="col-md-4 col-sm-12 d-bg">
+                                          <div class="devices" id="devices">
+                                             <div class="top-title">Devices</div>
+                                               <a href="#">
+                                                     <div class="single-item">
+                                                            <img src="/static/gsmapp/images/search-devices.jpg" alt="Device">
+                                                            <div class="title">Samsung Galaxy A51</div>
+                                                     </div>
+                                                </a>
+                                               <a href="#">
+                                                     <div class="single-item">
+                                                            <img src="/static/gsmapp/images/search-devices.jpg" alt="Device">
+                                                            <div class="title">Samsung Galaxy A51</div>
+                                                     </div>
+                                                 </a>
+                                               <a href="#">
+                                                     <div class="single-item">
+                                                            <img src="/static/gsmapp/images/search-devices.jpg" alt="Device">
+                                                            <div class="title">Samsung Galaxy A51</div>
+                                                     </div>
+                                                 </a>
+                                                 <a href="#" class="more">more review results <i class="fa fa-right-arrow"></i></a>
+                                          </div>
+                                     </div>
+                                     <div class="col-md-4 col-sm-12 n-bg">
+                                           <div class="news" id="news">
+                                             <div class="top-title">News</div>
+                                                <a href="#">
+                                                     <div class="single-item">
+                                                           <img src="/static/gsmapp/images/search-news.jpg" alt="News Image">
+                                                           <div class="title">Samsung Galaxy A42 to be the company's cheapest 5G phone</div>
+                                                     </div>
+                                                 </a>
+                                                <a href="#">
+                                                     <div class="single-item">
+                                                           <img src="/static/gsmapp/images/search-news.jpg" alt="News Image">
+                                                          <div class="title">Samsung Galaxy A42 to be the company's cheapest 5G phone</div>
+                                                     </div>
+                                                 </a>
+                                                <a href="#">
+                                                     <div class="single-item">
+                                                           <img src="/static/gsmapp/images/search-news.jpg" alt="News Image">
+                                                          <div class="title">Samsung Galaxy A42 to be the company's cheapest 5G phone</div>
+                                                     </div>
+                                                 </a>
+                                                 <a href="#" class="more">more review results <i class="fa fa-right-arrow"></i></a>
+                                           </div>
+                                     </div>
+                                 </div>
+                            </div>
+                        </div>
+                        <!-- <div class="col-md-3"> -->
+                        
+                        <!-- </div> -->
+
+                        <div class="mid-content">
+                                <!-- Navbar Header -->
+                                <div class="navbar-header">
+                                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#nav-open-btn" aria-expanded="false"> <span><i class="fa fa-navicon"></i></span> </button>
+                                </div>
+                                <!-- NAV -->
+                                <div class="collapse navbar-collapse" id="nav-open-btn">
+                                    <ul class="nav">
+                                        <li>
+                                            <!-- Categories -->
+                                            <div class="dropdown"> <button type="button" data-toggle="dropdown" class="dropdown-toggle cat-btn"><i class="fa fa-bars"></i>Categories</button>
+
+                                                    <ul class="dropdown-menu">
+                                                    {% for data in category_list|category_list %}
+                                                        <li><a href="/category/{{data.pk}}/{{data.cat_name}}/">{{ data.cat_name }}</a></li>
+                                                    {% endfor %}
+                                                </ul>
+
+                                            </div>
+                                        </li>
+                                        <li class=""> <a href="/">Home </a></li>
+                                        <li> <a href="{% url 'brand' %}">Brand </a></li>
+                                        <li> <a href="{% url 'blog' %}">Blog </a></li>
+                                        <li> <a href="#">Reviews </a></li>
+                                    </ul>
+                                </div>
+                        </div>
+                        
+                    </div>
+                </div>
+            </nav>
+        </header>
+
+        <!-- Categories_news Sec -->
+      <section class="cat-news">
+        <div class="container">
+            <div class="row">
+                <div class="main-box">
+                    <div class="col-md-4 col-sm-6  padding-left-0">
+                    <!-- Side Categories -->
+                    <div class="side-categories">
+                        <div class="card">
+                            <div class="card-header">
+                                <h3>GSM Riders</h3 >
+                               <a href="/gsm/brand/"> <h3>All</h3 ></a>
+                            </div>
+                            <div class="card-body cat-row">
+                                <div class="col-xs-4">
+                                    {% for data in brand_list|get_brand %}
+                                        <a href="/gsm/brand/{{ data.brand_name|lower}}">{{ data.brand_name }}</a>
+                                        {% if forloop.counter|divisibleby:"13" %}
+                                            {% if not forloop.last %} </div> <div class="col-xs-4"> {% endif %}
+                                        {% endif %}
+                                    {% endfor %}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="latest-news margin-top-10">
+                        <div class="side-banner">
+                            <a href="#"><img src="{% static 'gsmapp/images/top_banner_add.jpg' %}" alt="banner" class="img-fluid" style="width: 100%;height: 380px;"></a>
+                        </div>
+                        <div class="module module-rankings s3">
+                            <h4 class="section-heading right-border margin-bottom-10">Top 10 by daily interest</h4>
+                            <table class="table table-striped" cellspacing="0">
+                                <thead>
+                                    <tr>
+                                        <th scope="col" id="th3a" abbr="">&nbsp;</th>
+                                        <th scope="col" id="th3b" abbr="">Device</th>
+                                        <th scope="col" id="th3c" abbr="">Daily hits</th>
+                                        <th scope="col">&nbsp;</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr> </tr>
+                                    {% for data in daily_interest|daily_interest_product %}
+                                        <tr>
+                                            <td headers="th3a">{{ forloop.counter }}</td>
+                                            <th headers="th3b">
+                                                <a href="/{{data.pk}}/{{data.product_name.split|join:"-"|lower}}/"> <nobr>{{ data.product_name }}</nobr> </a>
+                                            </th>
+                                            <td headers="th3c" style="text-align: right;">{{ data.total_view }}</td>
+                                            <td></td>
+                                        </tr>
+                                    {% endfor %}
+                                </tbody>
+                            </table>
+
+
+                        </div>
+                        <div class="side-banner">
+                            <a href="#"><img src="{% static 'gsmapp/images/bottom_add.png' %}" alt="banner" class="img-fluid" style="width: 100%;height: 400px;"></a>
+                        </div>
+                        <div class="module module-rankings s3">
+                            <h4 class="section-heading2 right-border">Popular comparisons</h4>
+                            <table class="table table-striped" cellspacing="0">
+                                <tbody>
+                                    <tr>
+                                        <th><a href="#">Samsung Galaxy A51 vs. Galaxy A71</a></th>
+                                    </tr>
+                                    <tr>
+                                        <th><a href="#">Xiaomi Redmi Note 8 Pro vs. Redmi Note 8</a></th>
+                                    </tr>
+                                    <tr>
+                                        <th><a href="#">Apple iPhone 11 Pro Max vs. Galaxy S20 Ultra 5G</a></th>
+                                    </tr>
+                                    <tr>
+                                        <th><a href="#">Apple iPhone 11 Pro vs. Apple iPhone 11</a></th>
+                                    </tr>
+                                    <tr>
+                                        <th><a href="#">Realme 5 Pro vs. Xiaomi Redmi Note 8 Pro</a></th>
+                                    </tr>
+                                    <tr>
+                                        <th><a href="#">Samsung Galaxy S20+ vs. Galaxy S20</a></th>
+                                    </tr>
+                                    <tr>
+                                        <th><a href="#">Xiaomi Mi 10 Pro 5G vs. Xiaomi Mi 10 5G</a></th>
+                                    </tr>
+                                    <tr>
+                                        <th><a href="#">Apple iPhone 11 Pro Max vs. iPhone 11 Pro</a></th>
+                                    </tr>
+                                    <tr>
+                                        <th><a href="#">Samsung Galaxy A50 vs. Galaxy A51</a></th>
+                                    </tr>
+                                    <tr>
+                                        <th><a href="#">Samsung Galaxy S10 Lite vs. Galaxy Note10 Lite</a></th>
+                                    </tr>
+                                    <tr>
+                                        <th><a href="#">Xiaomi Mi Note 10 vs. Mi Note 10 Pro</a></th>
+                                    </tr>
+                                </tbody>
+
+                            </table>
+                        </div>
+
+                        {% if device_prices %}
+                            <div class="module price ">
+                                <h4 class="section-heading right-border">Prices</h4>
+                                <h6><a href="#">{{ device_prices.first.product_name }}</a></h6>
+
+                                <div class="pricing-container">
+                                    <div class="pricing-scroll-container" data-img="https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-11-pro.jpg">
+                                        {% regroup device_prices by device_title as device_price_list %}
+                                        {% for group in device_price_list %}
+                                            <div class="pricing">
+                                                <span>{{ group.grouper }}</span>
+                                                <ul>
+                                                    {% for data in group.list %}
+                                                        <li>
+                                                            <img src="/static/gsmapp/images/{{data.site_image}}" alt="">
+                                                            <a href="{{ data.site_link }}" target="_blank">$ {{ data.dollar_price }}</a>
+                                                        </li>
+                                                    {% endfor %}
+                                                </ul>
+                                            </div>
+                                        {% endfor %}
+                                    </div>
+                                    <div class="footer">
+                                        <div class="pad">
+                                            <a href="apple_iphone_11_pro_max-price-9846.php" class="show-more">Show all prices</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        {% endif %}
+                    </div>
+                </div>
+                <div class="col-md-8 col-sm-6">
+                    {% block content %} {% endblock %}
+
+                </div>
+                </div>
+
+            </div>
+        </div>
+      </section>
+
+        <!-- Footer -->
+        <footer>
+            <div class="container">
+                <div class="row">
+                    <!-- Contact -->
+                    <div class="col-md-4">
+                        <div class="footer-logo">
+                            <a href="/"><img src="{% static 'gsmapp/images/GSMRIDERS-01.png' %}" alt="logo" style="width:200px"></a>
+                        </div>
+                       <p>GSMRiders is a web platform providing detailed and up-to-date knowledge on cell phones and all gsm related products. GSMRiders is an online website that offers comprehensive and up-to-date mobile phone information. It helps its customers to get to know the current cell phone developments and other important information in real-time.</p>
+                        <div class="social-links">
+                            <a href="https://web.facebook.com/gsmriders"><i class="fa fa-facebook"></i></a>
+                            <a href="https://twitter.com/GsmRiders"><i class="fa fa-twitter"></i></a>
+                            <a href="https://www.linkedin.com/in/gsm-riders-aa19611b0/"><i class="fa fa-linkedin"></i></a>
+                            <a href="https://www.pinterest.com/gsmriders247/"><i class="fa fa-pinterest"></i></a>
+                            <a href="https://www.instagram.com/gsmriders"><i class="fa fa-instagram"></i></a>
+                        </div>
+                    </div>
+
+                    <!-- Categories -->
+                    <div class="col-md-2">
+                        <h4>Categories</h4>
+                        <ul class="links-footer">
+                            {% for data in category_list|category_list %}
+                                <li><a href="#">{{ data.cat_name }}</a></li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+
+                    <!-- Categories -->
+                    <div class="col-md-2">
+                        <h4>Top View Today </h4>
+                        <ul class="links-footer">
+                            <li><a href="https://gsmriders.com/gsm/brand/acer/">Acer</a></li>
+                            <li><a href="https://gsmriders.com/gsm/brand/apple/"> Apple</a></li>
+                            <li><a href="https://gsmriders.com/gsm/brand/google/"> Google</a></li>
+                            <li><a href="https://gsmriders.com/gsm/brand/htc/"> HTC</a></li>
+                            <li><a href="https://gsmriders.com/gsm/brand/huawei/"> Huawei </a></li>
+                        </ul>
+                    </div>
+
+                    <!-- Categories -->
+                    <div class="col-md-4">
+                        <h4>Subscribe Now </h4>
+                        {% if messages %}
+                            <div class="messages">
+                                {% for message in messages %}
+                                    <p{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</p>
+                                {% endfor %}
+                            </div>
+                        {% endif %}
+                        <form action="/gsm/subscribe-user-email/" autocomplete="off" class="form" method="post"> {% csrf_token %}
+                            <div class="form-group">
+                                <div class="input-group">
+                                    <span class="input-group-addon "><i class="glyphicon glyphicon-envelope color-blue"></i></span>
+                                    <input type="email" name="subscribe_email" placeholder="Enter Your Email Address" class="form-control subscriptions_form" required>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <input name="btnForget" class="btn btn-lg btn-primary btn-block Subscriptions" value="Send" type="submit">
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </footer>
+
+        <!-- Rights -->
+        <div class="rights">
+            <div class="container">
+                <div class="row"><div class="col-sm-6 text-center">
+                        <p>Copyright © 2020<span class="text-primary"> GSM Rider </span> All rights reserved</p>
+                    </div>
+
+                    <div class="col-sm-6 text-center">
+                        <ul class="links-footer privacy-footer">
+                            <li><a href="{% url 'privacy' %}"> Privacy & Policy</a></li>
+                            <li><a href="{% url 'terms' %}"> Terms & Conditions</a></li>
+                        </ul>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+        <!-- End Footer -->
+
+        <!-- GO TO TOP  -->
+        <a href="#" class="cd-top"><i class="fa fa-angle-up"></i></a>
+        <!-- GO TO TOP End -->
+    </div>
+    <!-- End Page Wrapper -->
+
+    <!-- JavaScripts -->
+    <script src="{% static 'gsmapp/js/vendors/jquery/jquery.min.js' %}"></script>
+    <script src="{% static 'gsmapp/js/vendors/wow.min.js' %}"></script>
+    <script src="{% static 'gsmapp/js/vendors/bootstrap.min.js' %}"></script>
+    <script src="{% static 'gsmapp/js/vendors/own-menu.js' %}"></script>
+    <script src="{% static 'gsmapp/js/vendors/jquery.sticky.js' %}"></script>
+    <script src="{% static 'gsmapp/js/vendors/owl.carousel.min.js' %}"></script>
+
+    <!-- SLIDER REVOLUTION  -->
+    <script type="text/javascript" src="{% static 'gsmapp/rs-plugin/js/jquery.tp.t.min.js' %}"></script>
+    <script type="text/javascript" src="{% static 'gsmapp/rs-plugin/js/jquery.tp.min.js' %}"></script>
+    <script src="{% static 'gsmapp/js/main.js' %}"></script>
+    <!-- search -->
+    <script>
+         $(function() {
+            $(".search-input").keypress(function() {
+                $(".top-search-content").show();
+            }).click(function() {
+                if($('.search-input').val().length!=0){
+                    $(".top-search-content").show('slow');
+                    // =====================
+                    
+                        var v = $(this).val();
+                        search_func(v);
+                    
+                    // =====================
+                }
+            });
+            $(document).click(function (e) {
+                if($(e.target).closest('.top-search-content').length || $(e.target).closest('.search-input').length)
+                    return;
+                $(".top-search-content").hide();
+             });
+        });
+    </script>
+
+    <!-- AJAX Setup -->
+    
+    <script src="https://cdn.jsdelivr.net/npm/js-cookie@rc/dist/js.cookie.min.js"></script>	
+    <script type="text/javascript">
+            var csrftoken = Cookies.get('csrftoken');
+            // console.log(csrftoken);
+            function csrfSafeMethod(method) {
+                // these HTTP methods do not require CSRF protection
+                return (/^(GET|HEAD|OPTIONS|TRACE)$/.test(method));
+            }
+            $.ajaxSetup({
+                crossDomain: false, // obviates need for sameOrigin test
+                beforeSend: function(xhr, settings) {
+                    if (!csrfSafeMethod(settings.type)) {
+                        xhr.setRequestHeader("X-CSRFToken", csrftoken);
+                    }
+                }
+            });
+    </script>
+    <!-- end ajax setup -->
+
+    <script>
+        $('#search-input').on('input', function() {
+            var v = $(this).val();
+            
+            search_func(v);
+            
+
+        });
+    </script>
+
+    <script>
+        function search_func(v) {
+            $.post("{% url 'search_data_ajax' %}",
+            {
+                data: v
+            },
+            function(data){
+                var txt = '<div class="devices" id="devices"><div class="top-title">Devices</div>';
+                
+                data = JSON.parse(data)
+                for (var i = 0; i < data.length; i++) {
+                    txt+= '<a href="/'+data[i][1].split(' ').join('-').toLowerCase()+'/">';
+                    txt+= '<div class="single-item">';
+                    txt+= '<img src="/static/gsmapp/images/'+data[i][0]+'" alt="Device">';
+                    txt+= '<div class="title">'+data[i][1]+'</div>';
+                    txt+= '</div>';
+                    txt+= '</a>';
+                     
+                }
+                txt+='<a href="#" class="more">more device results <i class="fa fa-right-arrow"></i></a></div>';
+
+                $('#devices').html(txt);
+                // console.log(data);
+            });  
+
+
+            // Blog
+
+            $.post("{% url 'blog_data_ajax' %}",
+            {
+                data: v
+            },
+            function(data){
+                var txt = '<div class="news" id="news"><div class="top-title">News</div>';
+                
+                data = JSON.parse(data)
+                for (var i = 0; i < data.length; i++) {
+                    txt+= '<a href="/'+data[i][2]+'/">';
+                    txt+= '<div class="single-item">';
+                    txt+= '<img src="/static/gsmapp/images/'+data[i][0]+'" alt="Device">';
+                    txt+= '<div class="title">'+data[i][1]+'</div>';
+                    txt+= '</div>';
+                    txt+= '</a>';
+                     
+                }
+                txt+='<a href="#" class="more">more news results <i class="fa fa-right-arrow"></i></a></div>';
+
+                $('#news').html(txt);
+
+                // console.log(data);
+                
+            });  
+        }
+    </script>
+
+<script>
+
+
+    $.get("{% url 'search_data_ajax' %}",
+        
+        function(data){
+            var txt = '<div class="devices" id="devices"><div class="top-title">Devices</div>';
+            
+            data = JSON.parse(data)
+            for (var i = 0; i < data.length; i++) {
+                txt+= '<a href="/'+data[i][2]+'/'+data[i][1].split(' ').join('-').toLowerCase()+'/">';
+                txt+= '<div class="single-item">';
+                txt+= '<img src="/static/gsmapp/images/'+data[i][0]+'" alt="Device">';
+                txt+= '<div class="title">'+data[i][1]+'</div>';
+                txt+= '</div>';
+                txt+= '</a>';
+                    
+            }
+            txt+='<a href="#" class="more">more device results <i class="fa fa-right-arrow"></i></a></div>';
+
+            $('#devices').html(txt);
+            // console.log(data);
+        });  
+
+
+
+    $.get("{% url 'blog_data_ajax' %}",
+        
+        function(data){
+            var txt = '<div class="news" id="news"><div class="top-title">News</div>';
+            
+            data = JSON.parse(data)
+            for (var i = 0; i < data.length; i++) {
+                txt+= '<a href="/'+data[i][2]+'/">';
+                txt+= '<div class="single-item">';
+                txt+= '<img src="/static/gsmapp/images/'+data[i][0]+'" alt="Device">';
+                txt+= '<div class="title">'+data[i][1]+'</div>';
+                txt+= '</div>';
+                txt+= '</a>';
+                    
+            }
+            txt+='<a href="#" class="more">more news results <i class="fa fa-right-arrow"></i></a></div>';
+
+            $('#news').html(txt);
+
+            // console.log(data);
+            
+        });  
+
+
+</script>
+
+
+
+
+</body>
+
+</html>

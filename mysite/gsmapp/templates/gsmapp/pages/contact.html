@@ -1,0 +1,44 @@
+{% extends 'gsmapp/pages/base.html' %}
+{% block title %} Brand | GSM Riders {% endblock %}
+{% load static %}
+{% load custom_tags %}
+{% block content %}
+
+<div class="contact-wrapper">
+    <div class="contact-title">
+        <h3>Contact Us</h3>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <div class="add-comments padding-top-20">
+                <h6>Leave a Comment</h6>
+
+                <!-- FORM -->
+                <form>
+                    <ul class="row">
+                        <li class="col-sm-6">
+                            <label>Name
+                                <input type="text" class="form-control" name="name" placeholder="">
+                            </label>
+                        </li>
+                        <li class="col-sm-6">
+                            <label>Email
+                                <input type="text" class="form-control" name="email" placeholder="">
+                            </label>
+                        </li>
+                        <li class="col-sm-12">
+                            <label>Message
+                                <textarea class="form-control" rows="5" placeholder=""></textarea>
+                            </label>
+                        </li>
+                        <li class="col-sm-12 text-left">
+                            <button type="submit" class="btn-round">Send Message</button>
+                        </li>
+                    </ul>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

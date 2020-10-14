@@ -1,0 +1,39 @@
+{% extends 'gsmapp/pages/base.html' %}
+{% block title %} {{ page_title }} | GSM Riders {% endblock %}
+{% load static %}
+{% block content %}
+
+    <div class="latest-news">
+         <div class="row">
+             <div class="device-wrapper device-wrapper-m">
+                <div class="row">
+                    <div class="col-md-12" style="padding-right: 20px;">
+                        <h3 class="brand-title">{{ brand_name }} </h3>
+                    </div>
+                </div>
+                {% for data in product_list %}
+                    <div class="col-md-3 col-sm-6 p-5">
+                            <!-- Product -->
+                            <a href="/{{data.pk}}/{{data.product_name.split|join:"-"|lower}}/">
+                                <div class="product">
+                                <article> <img {% if data.product_img %} src="/static/gsmapp/images/{{data.product_img}}" {% else %} src="/static/gsmapp/images/default.png" {% endif %} alt="image" class="img-responsive">
+                                <p class="tittle">{{ data.product_name }}</p>
+                                </article>
+                            </div>
+                        </a>
+                        <!-- Product -->
+                    </div> 
+                    {% if forloop.counter|divisibleby:"6" %}  
+                        <div class="col-md-6 col-sm-12 p-5">
+                            <!-- Add -->
+                            <div class="product-add">
+                                <img src="{% static 'gsmapp/images/product_add.jpg' %}" alt="product-add" class="img-responsive">
+                            </div>
+                        </div>
+                    {% endif %}    
+                {% endfor %}
+            </div>
+        </div>
+    </div> 
+     
+{% endblock %}   

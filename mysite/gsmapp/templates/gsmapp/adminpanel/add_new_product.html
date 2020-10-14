@@ -1,0 +1,263 @@
+{% extends 'gsmapp/adminpanel/admin_base.html' %}
+{% block title %} Add New Product | GSM Riders {% endblock %}
+{% load static %}
+{% load custom_tags %}
+{% block content %}
+
+    <div class="kt-portlet">
+        <div class="kt-portlet__head">
+            <div class="kt-portlet__head-label">
+                <h3 class="kt-portlet__head-title">
+                    <strong>Product Top Specifications</strong>
+                </h3> 
+            </div>
+        </div>
+        {% if messages %}
+            <div class="messages">
+                {% for message in messages %}
+                    <p{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</p>
+                {% endfor %}
+            </div>
+        {% endif %}
+        <!--begin::Form-->
+        <form method="POST" class="kt-form" enctype="multipart/form-data"> {% csrf_token %}
+           
+            <!--Begin::Row-->
+            <div class="row">
+                <div class="col-lg-12 col-xl-12 order-lg-1 order-xl-1">
+                    <div class="kt-portlet" style="border-bottom: 1px solid #ddd; box-shadow: 0 5px 6px #c0c1d2;">
+                            <div class="row">
+                                <div class="col-md-6 col-sm-6">
+                                    <div class="kt-portlet__body">
+                                        <div class="kt-section--first">
+                                            <label class="font-weight-bold">Category</label>
+                                            <div class="form-group ml-2">
+                                                <select class="form-control" name="cate_name">
+                                                    {% for data in category_list|category_list %}
+                                                        <option value="{{ data.pk }}">{{ data.cat_name }}</option>>
+                                                    {% endfor %}
+                                                </select>
+                                            </div>
+                                            <label class="font-weight-bold">Product Image:</label>
+                                            <div class="form-group ml-2">
+                                                <input type="file" name="product_img" value="" id="" class="form-control m-2">
+                                            </div>
+                                            <label class="font-weight-bold">Display:</label>
+                                            <div class="form-group ml-2">
+                                                <input type="text" id="" class="form-control m-2" name="display_size_top" value="" placeholder="Display Size">
+                                                <input type="text" id="" class="form-control m-2" name="display_resolution_top" value="" placeholder="DIsplay Resolution">
+                                            </div>
+                                            <label class="font-weight-bold">Camera:</label>
+                                            <div class="form-group ml-2">
+                                                <input type="text" id="" class="form-control m-2" name="camera_photo_pixel_top" value="" placeholder="Photo Pixel">
+                                                <input type="text" id="" class="form-control m-2" name="camera_video_pixel_top" value="" placeholder="Video Pixel">
+                                            </div>
+                                            <label class="font-weight-bold">Reviews:</label>
+                                            <div class="form-group ml-2">
+                                                <input type="text" id="" class="form-control m-2" name="reviews_top" value="" placeholder="Reviews">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6 col-sm-6">
+                                    <div class="kt-portlet__body">
+                                        <div class="kt-section--first">
+                                            <label class="font-weight-bold">RAM & Chipset:</label>
+                                            <div class="form-group ml-2">
+                                                <input type="text" id="" class="form-control m-2" name="ram_top" value="" placeholder="Ram">
+                                                <input type="text" id="" class="form-control m-2" name="chipset_top" value="" placeholder="Chipset">
+                                            </div>
+                                            <label class="font-weight-bold">Battery:</label>
+                                            <div class="form-group ml-2">
+                                                <input type="text" id="" class="form-control m-2" name="battery_capacity_top" value="" placeholder="Battery Capacity">
+                                                <input type="text" id="" class="form-control m-2" name="battery_technology_top" value="" placeholder="Battery Technology">
+                                            </div>
+                                            <label class="font-weight-bold">Other Specifications:</label>
+                                            <div class="form-group ml-2">
+                                                <textarea name="specifications_top" id="" class="form-control m-2" cols="30" rows="5"></textarea>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                            </div>
+                    </div>
+                </div>
+            </div>
+            <!--End::Row-->
+           
+            <div class="row">
+               <div class="col-md-12">
+                    <div class="kt-portlet__body" style="padding: 10px 22px 5px;border-bottom: 1px solid #ddd;">
+                        <h5 class="kt-portlet__head-title" style="color: #48465b;">
+                            <strong>Product Specifications Overview</strong>
+                        </h5> 
+                    </div>
+               </div>
+                <div class="col-md-6 col-sm-6">
+                    <div class="kt-portlet__body">
+                        <div class="kt-section--first">
+                            <label class="font-weight-bold">Product Name:</label>
+                            <div class="form-group ml-2">
+                                <input type="text" class="form-control m-2" name="product_name" placeholder="Product Name">
+                            </div>
+                            <label class="font-weight-bold">Product Model:</label>
+                            <div class="form-group ml-2">
+                                <input type="text" class="form-control m-2" name="product_model" placeholder="Product Model">
+                            </div>
+                            <label class="font-weight-bold">Brand Name:</label>
+                            <div class="form-group ml-2">
+                                <select class="form-control m-2" name="brand_name">
+                                    {% for data in brand_list %}
+                                        <option value="{{ data.pk }}">{{ data.brand_name }}</option>
+                                    {% endfor %}    
+                                </select>
+                            </div>
+                            <label class="font-weight-bold">Models:</label>
+                            <div class="form-group ml-2">
+                                <textarea name="overview_title" rows="5" class="form-control" placeholder="Model Details"></textarea>
+                            </div>
+                            <label class="font-weight-bold">Network:</label>
+                            <div class="form-group ml-2">
+                                <input type="text" id="" class="form-control m-2" name="network_technology" value="" placeholder="Technology">
+                                <input type="text" id="" class="form-control m-2" name="network_2g_bands" value="" placeholder="2G bands">
+                                <input type="text" id="" class="form-control m-2" name="network_3g_bands" value="" placeholder="3G bands">
+                                <input type="text" id="" class="form-control m-2" name="network_4g_bands" value="" placeholder="4G bands">
+                                <input type="text" id="" class="form-control m-2" name="network_5g_bands" value="" placeholder="5G bands">
+                                <input type="text" id="" class="form-control m-2" name="network_speed" value="" placeholder="Speed">
+                            </div>
+                            <label class="font-weight-bold">Launch:</label>
+                            <div class="form-group ml-2">
+                                <input type="text" id="" class="form-control m-2" name="launch_announced" value="" placeholder="Announced Date" required>
+                                <input type="text" id="" class="form-control m-2" name="launch_status" value="" placeholder="Status" required>
+                            </div>
+                            <label class="font-weight-bold">Body:</label>
+                            <div class="form-group ml-2">
+                                <input type="text" id="" class="form-control m-2" name="body_dimensions" value="" placeholder="Dimensions">
+                                <input type="text" id="" class="form-control m-2" name="body_weight" value="" placeholder="Weight">
+                                <input type="text" id="" class="form-control m-2" name="body_build" value="" placeholder="Build">
+                                <input type="text" id="" class="form-control m-2" name="body_sim" value="" placeholder="SIM">
+                            </div>
+                            <label class="font-weight-bold">Display:</label>
+                            <div class="form-group ml-2">
+                                <input type="text" id="" class="form-control m-2" name="display_type" value="" placeholder="Type">
+                                <input type="text" id="" class="form-control m-2" name="display_size" value="" placeholder="Size">
+                                <input type="text" id="" class="form-control m-2" name="display_resolution" value="" placeholder="Resolution">
+                                <input type="text" id="" class="form-control m-2" name="display_protection" value="" placeholder="Protection">
+                            </div>
+                            <label class="font-weight-bold">Platform:</label>
+                            <div class="form-group ml-2">
+                                <input type="text" id="" class="form-control m-2" name="platform_os" value="" placeholder="OS">
+                                <input type="text" id="" class="form-control m-2" name="platform_chipset" value="" placeholder="Chipset">
+                                <input type="text" id="" class="form-control m-2" name="platform_cpu" value="" placeholder="CPU">
+                                <input type="text" id="" class="form-control m-2" name="platform_gpu" value="" placeholder="GPU">
+                            </div>
+                            <label class="font-weight-bold">Memory:</label>
+                            <div class="form-group ml-2">
+                                <input type="text" id="" class="form-control m-2" name="memory_card_slot" value="" placeholder="Card Slot">
+                                <input type="text" id="" class="form-control m-2" name="memory_internal" value="" placeholder="Internal">
+                            </div>
+                            <label class="font-weight-bold">Latest Product:</label>
+                            <div class="form-group ml-2">
+                                <select name="latest_device" class="form-control m-2">
+                                    <option value="0">No</option>
+                                    <option value="1">Yes</option>
+                                </select>
+                            </div>
+                            <label class="font-weight-bold">Meta Title:</label>
+                            <div class="form-group ml-2">
+                                <input type="text" class="form-control m-2" name="meta_title" value="" placeholder="Meta Title">
+                            </div> 
+                            <label class="font-weight-bold">Meta Description:</label>
+                            <div class="form-group ml-2">
+                                <textarea class="form-control m-2" name="meta_des" placeholder="Meta Description"></textarea>
+                            </div>
+                            <label class="font-weight-bold">Page Title:</label>
+                            <div class="form-group ml-2">
+                                <textarea class="form-control m-2" name="page_title" placeholder="Page Title"></textarea>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-sm-6">
+                    <div class="kt-portlet__body">
+                        <div class="kt-section--first">
+                            <label class="font-weight-bold">Main Camera:</label>
+                            <div class="form-group ml-2">
+                                <input type="text" id="" class="form-control m-2" name="main_camera_type" value="" placeholder="Camera Type">
+                                <textarea class="form-control m-2" name="main_cam_type_des" placeholder="Camera Description"></textarea> 
+                                <input type="text" id="" class="form-control m-2" name="main_camera_features" value="" placeholder="Features">
+                                <input type="text" id="" class="form-control m-2" name="main_camera_video" value="" placeholder="Video">
+                            </div>
+                            <label class="font-weight-bold">Selfie camera:</label>
+                            <div class="form-group ml-2">
+                                <input type="text" id="" class="form-control m-2" name="selfie_camera_type" value="" placeholder="Selfie Camera Type">
+                                <textarea class="form-control m-2" name="selfie_cam_type_des" placeholder="Selfie Camera Description"></textarea>  
+                                <input type="text" id="" class="form-control m-2" name="selfie_camera_features" value="" placeholder="Features">
+                                <input type="text" id="" class="form-control m-2" name="selfie_camera_video" value="" placeholder="Video">
+                            </div>
+                            <label class="font-weight-bold">Sound:</label>
+                            <div class="form-group ml-2">
+                                <input type="text" id="" class="form-control m-2" name="sound_loudspeaker" value="" placeholder="Loudspeaker">
+                                <input type="text" id="" class="form-control m-2" name="sound_3_5mm_jack" value="" placeholder="3.5 mm jack">
+                            </div>
+                            <label class="font-weight-bold">Comms:</label>
+                            <div class="form-group ml-2">
+                                <input type="text" id="" class="form-control m-2" name="comms_wlan" value="" placeholder="WLAN">
+                                <input type="text" id="" class="form-control m-2" name="comms_bluetooth" value="" placeholder="Bluetooth">
+                                <input type="text" id="" class="form-control m-2" name="comms_gps" value="" placeholder="GPS">
+                                <input type="text" id="" class="form-control m-2" name="comms_nfc" value="" placeholder="NFC">
+                                <input type="text" id="" class="form-control m-2" name="comms_radio" value="" placeholder="Radio">
+                                <input type="text" id="" class="form-control m-2" name="comms_usb" value="" placeholder="USB">
+                            </div>
+                            <label class="font-weight-bold">Features:</label>
+                            <div class="form-group ml-2">
+                                <input type="text" id="" class="form-control m-2" name="features_sensors" value="" placeholder="Battery charging">
+                            </div>
+                            <label class="font-weight-bold">Battery:</label>
+                            <div class="form-group ml-2">
+                                <input type="text" id="" class="form-control m-2" name="battery_type" value="" placeholder="Battery type">
+                                <textarea class="form-control m-2" name="battery_description" placeholder="Battery Description"> </textarea> 
+                                <textarea class="form-control m-2" name="battery_charging" placeholder="Battery Charging"> </textarea> 
+                                <input type="text" id="" class="form-control m-2" name="battery_talk_time" value="" placeholder="Battery Talk Time">
+                                <input type="text" id="" class="form-control m-2" name="battery_music_play" value="" placeholder="Battery Music Play">
+                            </div>
+                            <label class="font-weight-bold">Misc:</label>
+                            <div class="form-group ml-2">
+                                <input type="text" id="" class="form-control m-2" name="misc_colors" value="" placeholder="Colors">
+                                <input type="text" id="" class="form-control m-2" name="misc_models" value="" placeholder="Models">
+                                <input type="text" id="" class="form-control m-2" name="misc_sar" value="" placeholder="SAR">
+                                <input type="text" id="" class="form-control m-2" name="misc_sar_eu" value="" placeholder="SAR EU">
+                                <input type="text" id="" class="form-control m-2" name="price" value="" placeholder="Price">
+                            </div>
+                            <label class="font-weight-bold">Tests:</label>
+                            <div class="form-group ml-2">
+                                <input type="text" id="" class="form-control m-2" name="test_performance" value="" placeholder="Performance">
+                                <input type="text" id="" class="form-control m-2" name="test_display" value="" placeholder="Display">
+                                <input type="text" id="" class="form-control m-2" name="test_camera" value="" placeholder="Camera">
+                                <input type="text" id="" class="form-control m-2" name="test_battery_life" value="" placeholder="Battery Life">
+                            </div>
+                            <label class="font-weight-bold">OG Description:</label>
+                            <div class="form-group ml-2">
+                                <textarea class="form-control m-2" name="og_description" placeholder="OG Description"></textarea>
+                            </div>
+                            <label class="font-weight-bold">Image Alt Tag:</label>
+                            <div class="form-group ml-2">
+                                <textarea class="form-control m-2" name="img_alt_tag" placeholder="Image Alt Tag"></textarea>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="kt-portlet__foot">
+                <div class="kt-form__actions">
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                    <button type="reset" class="btn btn-secondary">Cancel</button>
+                </div>
+            </div>
+        </form>
+
+        <!--end::Form-->
+    </div>
+{% endblock %}

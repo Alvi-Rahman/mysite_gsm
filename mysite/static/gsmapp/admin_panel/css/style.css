@@ -1,0 +1,59 @@
+.reg-fit {
+    height: 70vh;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+.action-btn span {
+    padding: 0 5px;
+}
+
+.selectdiv {
+    position: relative;
+    /*Don't really need this just for demo styling*/
+    float: left;
+}
+label{
+    color: #646c9a;
+}
+.selectdiv::after {
+    content: '\f107';
+    font-family: "FontAwesome";
+    color: #cbadf9;
+    right: 11px;
+    top: 1px;
+    height: 36px;
+    padding: 3px 0px 0px 8px;
+    border-left: 1px solid #cbadf9;
+    position: absolute;
+    pointer-events: none;
+    font-size: 20px;
+}
+
+/* IE11 hide native button (thanks Matt!) */
+
+select::-ms-expand {
+    display: none;
+}
+
+.selectdiv select {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    display: block;
+    width: 100%;
+    min-width: 100px;
+    height: 38px;
+    float: right;
+    margin: 0px 0px;
+    padding: 0px 5px;
+    font-size: 13px;
+    line-height: 1.75;
+    color: #333;
+    background-color: #ffffff;
+    background-image: none;
+    border: 1px solid #cbadf9;
+    -ms-word-break: normal;
+    word-break: normal;
+    border-radius: 3px 0 0 3px;
+}

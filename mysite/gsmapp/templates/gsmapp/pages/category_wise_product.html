@@ -1,0 +1,53 @@
+{% extends 'gsmapp/pages/base.html' %}
+{% block title %} Home | GSM Riders {% endblock %}
+{% load static %}
+{% block content %}
+
+<style>
+    .slider-col-2:first-child{
+        border-right:2px solid #eee;
+        border-bottom:2px solid #eee;
+    }
+    .slider-col-2:nth-child(2){
+        border-bottom:2px solid #eee;
+    }
+    .slider-col-2:nth-child(3){
+        border-right:2px solid #eee;
+    }
+    .slider-col-2:nth-child(4){
+        border-right:2px solid #eee;
+    }
+
+</style>
+
+
+    <div class="latest-news">
+        <div class="row">
+            <div class="device-wrapper margin-left-min-5" style="margin-top: -5px !important;">
+                {% for data in cat_wise_product %}
+                    <div class="col-md-3 col-sm-6 p-5">
+                            <!-- Product -->
+                            <a href="/{{data.pk}}/{{data.product_name.split|join:"-"|lower}}/">
+                                <div class="product">
+                                <article> <img {% if data.product_img %} src="/static/gsmapp/images/{{data.product_img}}" {% else %} src="/static/gsmapp/images/default.png" {% endif %} alt="image" class="img-responsive">
+                                <p class="tittle">{{ data.product_name }}</p>
+                                </article>
+                            </div>
+                        </a>
+                        <!-- Product -->
+                    </div>
+                    {% if forloop.counter|divisibleby:"8" %}
+                        <div class="col-md-12 col-sm-12 p-12" style="padding: 5px !important;">
+                            <!-- Add -->
+                            <div class="product-add">
+                                <img src="{% static 'gsmapp/images/product_add.jpg' %}" alt="product-add" class="img-responsive">
+                            </div>
+                        </div>
+                    {% endif %}
+                {% endfor %}
+            </div>
+        </div>
+
+    </div>
+
+{% endblock %}

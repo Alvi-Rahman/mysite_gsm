@@ -1,0 +1,82 @@
+{% extends 'gsmapp/adminpanel/admin_base.html' %}
+{% block title %} Product List | GSM Riders {% endblock %}
+{% load static %}
+{% block content %}
+ 
+<div class="kt-portlet">
+    <div class="kt-portlet__body">
+        {% if messages %}
+            <div class="messages">
+                {% for message in messages %}
+                    <p{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</p>
+                {% endfor %}
+            </div>
+        {% endif %}
+        <div class="kt-widget kt-widget--user-profile-3">
+            <form method="POST"> {% csrf_token %}
+                <table class="table table-striped table-bordered" style="width:100%">
+                    <tr>
+                        <th style="vertical-align: middle;">Brand</th>
+                        <td>
+                            <select class="form-control m-2" name="brand_name">
+                                {% for data in brand_list %}
+                                    <option value="{{ data.pk }}" {% if brand_id == data.pk %} selected {% endif %}>{{ data.brand_name }}</option>
+                                {% endfor %}    
+                            </select>
+                        </td>
+                        <th style="vertical-align: middle;"> Product Name </th>
+                        <td> <input type="text" name="search_product" placeholder="Input product name" class="form-control"/> </td>
+                        <td> <input type="submit" value="Search" class="btn btn-primary"/>  </td>
+                    </tr> 
+                </table>
+            </form> 
+
+            <table class="table table-striped table-bordered" style="width:100%">
+                <thead>
+                    <tr>
+                        <th class="text-center">SL</th>
+                        <th>Category Name</th> 
+                        <th>Product Name</th> 
+                        <th>Brand Name</th> 
+                        <th>Image</th> 
+                        <th>Update Date</th> 
+                        <th>Status</th> 
+                        <th class="text-center">Edit</th> 
+                        <th class="text-center">3D View</th> 
+                        <th class="text-center">Review</th> 
+                        <th class="text-center">Pricing</th> 
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for data in get_product_list %}
+                        <tr>
+                            <td class="text-center"> {{ forloop.counter }}</td>
+                            <td> {{ data.cat_name }} </td>
+                            <td> {{ data.product_name }} </td>
+                            <td> {{ data.brand_name }} </td>
+                            <td> <img {% if data.product_img %} src="/static/gsmapp/images/{{ data.product_img }}" {% else %} src="/static/gsmapp/images/default.png" {% endif %} style="height:40px;width:50px;"> </td>
+                            <td> {{ data.update_date|date:"Y-m-d" }}</td>
+                            <td> {% if data.status %} Active {% else %} <span style="color:red">Inactive</span>{% endif %} </td> 
+                            <td class="text-center action-btn">
+                                <span><a class="kt-font-primary" href="/gsm/{{data.pk}}/edit-product/"> <i class="fas fa-edit"></i> </a></span>
+                            </td>
+                            <td class="text-center action-btn">
+                                <span><a class="kt-font-primary" href="/gsm/{{data.pk}}/product-3d-view/"> <i class="fas fa-edit"></i> </a></span>
+                            </td>
+                            <td class="text-center action-btn">
+                                <span><a class="kt-font-primary" href="/gsm/{{data.pk}}/product-review-details/"> <i class="fas fa-edit"></i> </a></span>
+                            </td>
+                            <td class="text-center action-btn">
+                                <span><a class="kt-font-primary" href="/gsm/{{data.pk}}/device-price-list/"> <i class="fas fa-edit"></i> </a></span>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+
+        </div>
+
+    </div>
+</div>
+
+{% endblock %}

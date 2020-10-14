@@ -1,0 +1,115 @@
+{% extends 'gsmapp/pages/base.html' %}
+{% block title %} {{ page_title }} | GSM Riders{% endblock %}
+{% block meta_des %} {{ blog_details.meta_des }} {% endblock %}
+{% block ogimage %}/static/gsmapp/images/{{ blog_details.blog_img }}{% endblock %}
+{% block ogtitle %}{{ blog_details.blog_title }}{% endblock %}
+{% block ogdescription %}{{ blog_details.og_description }}{% endblock %}
+{% block meta_title %}{{ blog_details.meta_des }}{% endblock %}
+{% block meta_description %}{{ blog_details.og_description }}{% endblock %}
+{% load static %}
+{% load custom_tags %}
+{% block content %}
+
+
+<div class="row">
+    <div class="news-items">
+        <div class="col-lg-12 col-md-12 px-0">
+            <div class="news-item-media-wrap1 left">
+                <img {% if blog_details.blog_img %} src="/static/gsmapp/images/{{blog_details.blog_img}}" {% else %} src="/static/gsmapp/images/default.png" {% endif %} class="img-responsive" alt="{{blog_details.img_alt_tag}}">
+            </div>
+        </div>
+        <div class="col-md-12 col-sm-12 px-0">
+            <div class="content" id="new-items-content">
+                <h2>{{ blog_details.blog_title }}</h2>
+                <p>{{ blog_details.blog_details|safe }}</p>
+            </div>
+
+            <div>
+                {% if blog_details.source %}
+                    <a href="{{ blog_details.source }}" target="_blank" style="text-decoration: underline importaint;">Source</a>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="news-items">
+        <div class="col-md-12 col-sm-12 padding-0">
+            <div class="content">
+                <!-- Recent Posts -->
+                <h3>Related Posts</h3>
+                <div class="recent-post">
+                    <div class="row">
+                        {% for data in related_blog_post %}
+                            <div class="col-md-3">
+                                <div class="media">
+                                    <div class="media">
+                                        <a href="/blog/{{data.blog_slug}}/">
+                                            <img class="img-responsive" {% if data.blog_img %} src="/static/gsmapp/images/{{ data.blog_img }}" {% else %} src="/static/gsmapp/images/default.png" {% endif %} alt="{{data.img_alt_tag}}">
+                                        </a>
+                                        <a href="/blog/{{data.blog_slug}}/"><p>{{ data.blog_title|truncatechars:"30" }}</p></a>
+                                    </div>
+                                </div>
+                            </div>
+                        {% endfor %}
+                    </div>
+                </div>
+
+                    <!-- Comments -->
+                <div class="comments">
+                    <h6 class="margin-0">Comments ({{ user_blog_comments.count }})</h6>
+                    <ul>
+                    <!-- Comments -->
+                    {% for data in user_blog_comments %}
+                        <li class="media">
+                            <div class="media-left"> <a href="#" class="avatar"> <img src="{% static 'gsmapp/images/avatar.jpg' %}" alt=""> </a> </div>
+                            <div class="media-body padding-left-20">
+                            <h6> {{ data.full_name }} <span><i class="fa fa-bookmark-o"></i> {{ data.added_date }} </span> </h6>
+                            <p>{{ data.user_comment }}</p>
+                            </div>
+                        </li>
+                    {% endfor %}
+                    </ul>
+                </div>
+
+                <!-- ADD comments -->
+                <div class="add-comments">
+                    <h6>Leave a Comment</h6>
+                    {% if messages %}
+                        <div class="messages">
+                            {% for message in messages %}
+                                <p{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</p>
+                            {% endfor %}
+                        </div>
+                    {% endif %}
+                    <!-- FORM -->
+                    <form method="POST"> {% csrf_token %}
+                        <ul class="row">
+                            <li class="col-sm-6">
+                            <label>Name
+                                <input type="text" class="form-control" name="user_name" placeholder="">
+                            </label>
+                            </li>
+                            <li class="col-sm-6">
+                            <label>Email
+                                <input type="text" class="form-control" name="user_email" placeholder="">
+                            </label>
+                            </li>
+                            <li class="col-sm-12">
+                            <label>Message
+                                <textarea class="form-control" rows="5" name="user_comment" placeholder=""></textarea>
+                            </label>
+                            </li>
+                            <li class="col-sm-12 text-left">
+                                <button type="submit" class="btn-round Subscriptions2">Send Message</button>
+                            </li>
+                        </ul>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

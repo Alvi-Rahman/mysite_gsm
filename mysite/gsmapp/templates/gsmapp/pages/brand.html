@@ -1,0 +1,33 @@
+{% extends 'gsmapp/pages/base.html' %}
+{% block title %} All mobile phone brands | GSM Riders {% endblock %}
+{% load static %}
+{% load custom_tags %}
+{% block content %}
+<style>
+    .col-md-8{
+        padding:0 !important;
+    }
+</style>
+<div class="all_brand_list margin-bottom-10">
+    <div class="title"><h3 class="margin-bottom-5">All mobile phone brands</h3>
+        <div class="row brands-div-wrapper">
+            {% for data in brand_list %}
+                <div class="col-md-4">
+                    <a href="/gsm/brand/{{ data.brand_name|lower}}">
+                        <div class="outer-brand">
+                            <div class="brands-div">
+                                <img src="/static/gsmapp/images/{{data.brand_img}}" alt="{{data.brand_name}}">
+                                <div class="brand-content">
+                                    <h2>{{ data.brand_name }} </h2>
+                                    <p>{{ data.pk|brand_device_count }} devices</p>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+
+{% endblock %}

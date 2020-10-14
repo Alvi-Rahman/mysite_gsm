@@ -1,0 +1,1317 @@
+{% extends 'gsmapp/pages/base.html' %}
+{% block title %} {{ page_title }} | gsmriders.com {% endblock %}
+{% block meta_title %}{{ data.meta_des }}{% endblock %}
+{% block meta_description %}{{ data.og_description }}{% endblock %}
+{% block ogimage %}/static/gsmapp/images/{{ data.product_img }}{% endblock %}
+{% block ogtitle %}{{ data.product_name }}{% endblock %}
+{% block ogdescription %}{{ data.og_description }}{% endblock %}
+{% load static %}
+{% block content %}
+
+<style>
+    .col-md-8{
+        padding:0 !important;
+    }
+</style>
+
+<div class="review-header hreview">
+    <h2 class="title">{{ data.product_name }}</h2>
+    <div class="article-info">
+       <div class="row">
+           <div class="col-md-3">
+               <img {% if data.product_img %} src="/static/gsmapp/images/{{data.product_img}}" {% else %} src="/static/gsmapp/images/default.png" {% endif %} alt="{{ data.img_alt_tag }}">
+           </div>
+           <div class="col-md-5">
+                <div class="row pb-5">
+                    <div class="col-md-6 text-left b-right">
+                        <img src="{% static 'gsmapp/images/icon/display.png' %}" alt="display" style="width:20px;height:20px">
+                        <h2>{{ data.display_size_top }}</h2>
+                        <p>{{ data.display_resolution_top }}</p>
+                    </div>
+                    <div class="col-md-6 b-right text-left">
+                        <img src="{% static 'gsmapp/images/icon/lens.png' %}" alt="display" style="width:20px;height:20px">
+                        <h2>{{ data.camera_photo_pixel_top }}</h2>
+                        <p>{{ data.camera_video_pixel_top }}</p>
+                    </div>
+                    <div class="col-md-12">
+                        <ul class="b-right">
+                            <li><span>Released {{ data.specifications_top }}</span></li>
+                        </ul>
+                    </div>
+                </div>
+           </div>
+
+            
+                
+                    <div class="col-md-2 b-right text-left">
+                            <img src="{% static 'gsmapp/images/icon/chip.png' %}" alt="display" style="width:20px;height:20px">
+                            <h2>{{ data.ram_top }}</h2>
+                            <p>{{ data.chipset_top }}</p>
+                    </div>
+                    <div class="col-md-2 text-left">
+                        <img src="{% static 'gsmapp/images/icon/lens.png' %}" alt="display" style="width:20px;height:20px">
+                        <h2>{{ data.battery_capacity_top }}</h2>
+                        <p>{{ data.battery_technology_top }}</p>
+
+                        <div class="col-md-3" style=" margin-top: 20px; margin-left: -80px;">
+                            
+                                <span><iframe width="120" height="75" src="https://www.youtube.com/embed/03nIRHdhDZk"></iframe></span>
+                            
+                        </div>
+                        
+                        <a href="#">
+                            
+                            <p class="rev">
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star-o"></i>
+                                <span>4.1</span>
+                            </p>
+                        </a>
+                    </div>
+                    
+                
+           
+
+
+
+       </div>
+    </div>
+</div>
+<div class="latest-news">
+    <div class="item-tabs-sec">
+        <!-- Nav tabs -->
+        <ul class="nav" role="tablist">
+            <li role="presentation" class="active"><a href="#overview" role="tab" data-toggle="tab" aria-expanded="true">Overview</a></li>
+            <li role="presentation" class=""><a href="#review" role="tab" data-toggle="tab" aria-expanded="false">Review</a></li>
+            <li role="presentation" class=""><a href="#compare" role="tab" data-toggle="tab" aria-expanded="false">Compare</a></li>
+            <li role="presentation" class=""><a href="#3Dview" role="tab" data-toggle="tab" aria-expanded="false">3D View</a></li>
+            <li role="presentation" class=""><a href="#comment" role="tab" data-toggle="tab" aria-expanded="false">Comment</a></li>
+        </ul>
+
+        <!-- Tab panes -->
+        <div class="tab-content">
+            <div role="tabpanel" class="tab-pane fade active in" id="overview">
+                <div id="specs-list">
+                    {% if data.overview_title %}
+                        <div class="model-details">
+                            {% if data.product_model %}
+                                <p class="model-num">{{ data.product_model }}</p>
+                            {% endif %}
+                            <p> {{ data.overview_title }} </p>
+                        </div>
+                    {% endif %}
+
+                    <table class="table" style="max-height: 28px;" cellspacing="0">
+                        <tbody>
+                            <tr class="tr-hover">
+                                <th width="15%" rowspan="6">Network</th>
+                                {% if data.network_technology %}
+                                    <td class="ttl" width="15%"><a href="#">Technology</a></td>
+                                    <td class="nfo" width="70%"><a href="#" data-spec="nettech">{{ data.network_technology }}</a></td>
+                                {% endif %}
+                            </tr>
+                            <tr class="tr-toggle">
+                                {% if data.network_2g_bands %}
+                                    <td class="ttl"><a href="#">2G bands</a></td>
+                                    <td class="nfo" data-spec="net2g">{{ data.network_2g_bands }}</td>
+                                {% endif %}
+                            </tr>
+                            <tr class="tr-toggle">
+                                {% if data.network_3g_bands %}
+                                    <td class="ttl"><a href="#">3G bands</a></td>
+                                    <td class="nfo" data-spec="net3g">{{ data.network_3g_bands }} </td>
+                                {% endif %}
+                            </tr>
+                            <tr class="tr-toggle">
+                                {% if data.network_4g_bands %}
+                                    <td class="ttl"><a href="#">4G bands</a></td>
+                                    <td class="nfo" data-spec="net4g">{{ data.network_4g_bands }}</td>
+                                {% endif %}
+                            </tr>
+                            <tr class="tr-toggle">
+                                {% if data.network_5g_bands %}
+                                    <td class="ttl"><a href="#">5G</a></td>
+                                    <td class="nfo" data-spec="net4g"> {{ data.network_5g_bands }}</td>
+                                {% endif %}
+                            </tr>
+                            <tr class="tr-toggle">
+                                {% if data.network_speed %}
+                                    <td class="ttl"><a href="#">Speed</a></td>
+                                    <td class="nfo" data-spec="speed">{{ data.network_speed }}</td>
+                                {% endif %}
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <table class="table" cellspacing="0">
+                        <tbody>
+                            {% if data.launch_announced or data.launch_status %}
+                                <tr>
+                                    <th width="15%" rowspan="2" scope="row">Launch</th>
+                                    {% if data.launch_announced %}
+                                        <td class="ttl" width="15%"><a href="#">Announced</a></td>
+                                        <td class="nfo" data-spec="year">{{ data.launch_announced }}</td>
+                                    {% endif %}
+                                </tr>
+                                <tr>
+                                    {% if data.launch_status %}
+                                        <td class="ttl"><a href="#">Status</a></td>
+                                        <td class="nfo" data-spec="status">{{ data.launch_status }}</td>
+                                    {% endif %}
+                                </tr>
+                            {% endif %}
+                        </tbody>
+                    </table>
+
+                    <table class="table" cellspacing="0">
+                        <tbody>
+                            {% if data.body_dimensions or data.body_weight or data.body_build or data.body_sim %}
+                                <tr>
+                                    <th width="15%" rowspan="4" scope="row">Body</th>
+                                    {% if data.body_dimensions %}
+                                        <td class="ttl" width="15%"><a href="#" onclick="helpW('h_dimens.htm');">Dimensions</a></td>
+                                        <td class="nfo" data-spec="dimensions">{{ data.body_dimensions }}</td>
+                                    {% endif %}
+                                </tr>
+                                <tr>
+                                    {% if data.body_weight %}
+                                        <td class="ttl"><a href="#" onclick="helpW('h_weight.htm');">Weight</a></td>
+                                        <td class="nfo" data-spec="weight">{{ data.body_weight }}</td>
+                                    {% endif %}
+                                </tr>
+                                <tr>
+                                    {% if data.body_build %}
+                                        <td class="ttl"><a href="#">Build</a></td>
+                                        <td class="nfo" data-spec="build">{{ data.body_build }}</td>
+                                    {% endif %}
+                                </tr>
+                                <tr>
+                                    {% if data.body_sim %}
+                                        <td class="ttl"><a href="#">SIM</a></td>
+                                        <td class="nfo" data-spec="sim">{{ data.body_sim }}</td>
+                                    {% endif %}
+                                </tr>
+                            {% endif %}
+                        </tbody>
+                    </table>
+                    <table>
+                        <tr>
+                            <div class="table-add-banner">
+                                <a href="#"> <img src="{% static 'gsmapp/images/top_add.png' %}" alt="add-banner" class="img-responsive"></a>
+                             </div>
+                        </tr>
+                    </table>
+                    <table class="table" cellspacing="0">
+                        <tbody>
+                            {% if data.display_type or data.display_size or data.display_resolution or data.display_protection %}
+                                <tr>
+                                    <th width="15%" rowspan="4" scope="row">Display</th>
+                                    {% if data.display_type %}
+                                        <td class="ttl" width="15%"><a href="#">Type</a></td>
+                                        <td class="nfo" data-spec="displaytype">{{ data.display_type }}</td>
+                                    {% endif %}
+                                </tr>
+                                <tr>
+                                    {% if data.display_size %}
+                                        <td class="ttl"><a href="#" onclick="helpW('h_dsize.htm');">Size</a></td>
+                                        <td class="nfo" data-spec="displaysize">{{ data.display_size }}</td>
+                                    {% endif %}
+                                </tr>
+                                <tr>
+                                    {% if data.display_resolution %}
+                                        <td class="ttl"><a href="#">Resolution</a></td>
+                                        <td class="nfo" data-spec="displayresolution">{{ data.display_resolution }}</td>
+                                    {% endif %}
+                                </tr>
+                                <tr>
+                                    {% if data.display_protection %}
+                                        <td class="ttl"><a href="#">Protection</a></td>
+                                        <td class="nfo" data-spec="displayprotection">{{ data.display_protection }}</td>
+                                    {% endif %}
+                                </tr>
+                            {% endif %}
+                        </tbody>
+                    </table>
+
+                    <table class="table" cellspacing="0">
+                        <tbody>
+                            {% if data.platform_os or data.platform_chipset or data.platform_cpu or data.platform_gpu %}
+                                <tr>
+                                    <th width="15%" rowspan="4" scope="row">Platform</th>
+                                    {% if data.platform_os %}
+                                        <td class="ttl" width="15%"><a href="#">OS</a></td>
+                                        <td class="nfo" data-spec="os">{{ data.platform_os }}</td>
+                                    {% endif %}
+                                </tr>
+                                <tr>
+                                    {% if data.platform_chipset %}
+                                        <td class="ttl"><a href="#">Chipset</a></td>
+                                        <td class="nfo" data-spec="chipset">{{ data.platform_chipset }}</td>
+                                    {% endif %}
+                                </tr>
+                                <tr>
+                                    {% if data.platform_cpu %}
+                                        <td class="ttl"><a href="#">CPU</a></td>
+                                        <td class="nfo" data-spec="cpu">{{ data.platform_cpu }}</td>
+                                    {% endif %}
+                                </tr>
+                                <tr>
+                                    {% if data.platform_gpu %}
+                                        <td class="ttl"><a href="#">GPU</a></td>
+                                        <td class="nfo" data-spec="gpu">{{ data.platform_gpu }}</td>
+                                    {% endif %}
+                                </tr>
+                            {% endif %}
+                        </tbody>
+                    </table>
+
+                    <table class="table" cellspacing="0">
+                        <tbody>
+                            {% if data.memory_card_slot or data.memory_internal %}
+                                <tr>
+                                    <th width="15%" rowspan="2" scope="row">Memory</th>
+                                    {% if data.memory_card_slot %}
+                                        <td class="ttl" width="15%"><a href="#">Card slot</a></td>
+                                        <td class="nfo" data-spec="memoryslot">{{ data.memory_card_slot }}</td>
+                                    {% endif %}
+                                </tr>
+                                <tr>
+                                    {% if data.memory_internal %}
+                                        <td class="ttl"><a href="#">Internal</a></td>
+                                        <td class="nfo" data-spec="internalmemory">{{ data.memory_internal }}</td>
+                                    {% endif %}
+                                </tr>
+                            {% endif %}
+                        </tbody>
+                    </table>
+
+                    <table class="table" cellspacing="0">
+                        <tbody>
+                            {% if data.main_camera_type or data.main_cam_type_des or data.main_camera_features or data.main_camera_video %}
+                                <tr>
+                                    <th width="15%" rowspan="3" scope="row" class="small-line-height">Main Camera</th>
+                                    {% if data.main_camera_type %}
+                                        <td class="ttl" width="15%"><a href="#">{{ data.main_camera_type }}</a></td>
+                                        <td class="nfo" data-spec="cam1modules">{{ data.main_cam_type_des }}</td>
+                                    {% endif %}
+                                </tr>
+                                <tr>
+                                    {% if data.main_camera_features %}
+                                        <td class="ttl"><a href="#">Features</a></td>
+                                        <td class="nfo" data-spec="cam1features">{{ data.main_camera_features }}</td>
+                                    {% endif %}
+                                </tr>
+                                <tr>
+                                    {% if data.main_camera_video %}
+                                        <td class="ttl"><a href="#">Video</a></td>
+                                        <td class="nfo" data-spec="cam1video">{{ data.main_camera_video }}</td>
+                                    {% endif %}
+                                </tr>
+                            {% endif %}
+                        </tbody>
+                    </table>
+
+                    <table class="table" cellspacing="0">
+                        <tbody>
+                            {% if data.selfie_camera_type or data.selfie_cam_type_des or data.main_camera_features %}
+                                <tr>
+                                    <th width="15%" rowspan="3" scope="row" class="small-line-height">Selfie camera</th>
+                                    {% if data.selfie_camera_type %}
+                                        <td class="ttl" width="15%"><a href="#">{{ data.selfie_camera_type }}</a></td>
+                                        <td class="nfo" data-spec="cam2modules">{{ data.selfie_cam_type_des }}</td>
+                                    {% endif %}
+                                </tr>
+                                <tr>
+                                    {% if data.selfie_camera_features %}
+                                        <td class="ttl"><a href="#">Features</a></td>
+                                        <td class="nfo" data-spec="cam2features">{{ data.selfie_camera_features }}</td>
+                                    {% endif %}
+                                </tr>
+                                <tr>
+                                    {% if data.selfie_camera_video %}
+                                        <td class="ttl"><a href="#">Video</a></td>
+                                        <td class="nfo" data-spec="cam2video">{{ data.selfie_camera_video }}</td>
+                                    {% endif %}
+                                </tr>
+                            {% endif %}
+                        </tbody>
+                    </table>
+
+                    <table class="table" cellspacing="0">
+                        <tbody>
+                            {% if data.selfie_camera_type or data.selfie_cam_type_des or data.main_camera_features %}
+                                <tr>
+                                    <th width="15%" rowspan="2" scope="row">Sound</th>
+                                    {% if data.sound_loudspeaker %}
+                                        <td class="ttl" width="15%"><a href="#">Loudspeaker</a> </td>
+                                        <td class="nfo">{{ data.sound_loudspeaker }}</td>
+                                    {% endif %}
+                                </tr>
+                                <tr>
+                                    {% if data.sound_3_5mm_jack %}
+                                        <td class="ttl"><a href="#">3.5mm jack</a> </td>
+                                        <td class="nfo">{{ data.sound_3_5mm_jack }}</td>
+                                    {% endif %}
+                                </tr>
+                            {% endif %}
+                        </tbody>
+                    </table>
+
+                    <table class="table" cellspacing="0">
+                        <tbody>
+                            {% if data.comms_wlan or data.comms_bluetooth or data.comms_gps or data.comms_nfc or data.comms_radio %}
+                                <tr>
+                                    <th width="15%" rowspan="6" scope="row">Comms</th>
+                                    {% if data.comms_wlan %}
+                                        <td class="ttl" width="15%"><a href="#">WLAN</a></td>
+                                        <td class="nfo" data-spec="wlan">{{ data.comms_wlan }}</td>
+                                    {% endif %}
+                                </tr>
+                                <tr>
+                                    {% if data.comms_bluetooth %}
+                                        <td class="ttl"><a href="#">Bluetooth</a></td>
+                                        <td class="nfo" data-spec="bluetooth">{{ data.comms_bluetooth }}</td>
+                                    {% endif %}
+                                </tr>
+                                <tr>
+                                    {% if data.comms_gps %}
+                                        <td class="ttl"><a href="#">GPS</a></td>
+                                        <td class="nfo" data-spec="gps">{{ data.comms_gps }}</td>
+                                    {% endif %}
+                                </tr>
+                                <tr>
+                                    {% if data.comms_nfc %}
+                                        <td class="ttl"><a href="#">NFC</a></td>
+                                        <td class="nfo" data-spec="nfc">{{ data.comms_nfc }}</td>
+                                    {% endif %}
+                                </tr>
+                                <tr>
+                                    {% if data.comms_radio %}
+                                        <td class="ttl"><a href="#">Radio</a></td>
+                                        <td class="nfo" data-spec="radio">{{ data.comms_radio }}</td>
+                                    {% endif %}
+                                </tr>
+                                <tr>
+                                    {% if data.comms_usb %}
+                                        <td class="ttl"><a href="#">USB</a></td>
+                                        <td class="nfo" data-spec="usb">{{ data.comms_usb }}</td>
+                                    {% endif %}
+                                </tr>
+                            {% endif %}
+                        </tbody>
+                    </table>
+
+                    <table class="table" cellspacing="0">
+                        <tbody>
+                            {% if data.features_sensors %}
+                                <tr>
+                                    <th width="15%" rowspan="1" scope="row">Features</th>
+                                    <td class="ttl" width="15%"><a href="#">Sensors</a></td>
+                                    <td class="nfo" data-spec="sensors">{{ data.features_sensors }}</td>
+                                </tr>
+                            {% endif %}
+                        </tbody>
+                    </table>
+
+                    <table class="table" cellspacing="0">
+                        <tbody>
+                            {% if data.battery_description or data.battery_charging or data.battery_talk_time or data.battery_music_play %}
+                                <tr>
+                                    <th width="15%" rowspan="4" scope="row">Battery</th>
+                                    {% if data.battery_type %}
+                                        <td class="ttl" width="15%">{{ data.battery_type }}</td>
+                                        <td class="nfo" data-spec="batdescription1">{{ data.battery_description }}</td>
+                                    {% endif %}
+                                </tr>
+                                <tr>
+                                    {% if data.battery_charging %}
+                                        <td class="ttl"><a href="#">Charging</a></td>
+                                        <td class="nfo">{{ data.battery_charging }}</td>
+                                    {% endif %}
+                                </tr>
+                                <tr>
+                                    {% if data.battery_talk_time %}
+                                        <td class="ttl"><a href="#">Talk Time</a></td>
+                                        <td class="nfo">{{ data.battery_talk_time }}</td>
+                                    {% endif %}
+                                </tr>
+                                <tr>
+                                    {% if data.battery_music_play %}
+                                        <td class="ttl"><a href="#">Music Play</a></td>
+                                        <td class="nfo">{{ data.battery_music_play }}</td>
+                                    {% endif %}
+                                </tr>
+                            {% endif %}
+                        </tbody>
+                    </table>
+
+                    <table class="table" cellspacing="0">
+                        <tbody>
+                            {% if data.misc_colors or data.misc_models or data.misc_sar or data.misc_sar_eu or data.price %}
+                                <tr>
+                                    <th width="15%" rowspan="5" scope="row">Misc</th>
+                                    {% if data.misc_colors %}
+                                        <td class="ttl" width="15%"><a href="#">Colors</a></td>
+                                        <td class="nfo" data-spec="colors">{{ data.misc_colors }}</td>
+                                    {% endif %}
+                                </tr>
+                                <tr>
+                                    {% if data.misc_models %}
+                                        <td class="ttl"><a href="#">Models</a></td>
+                                        <td class="nfo" data-spec="models">{{ data.misc_models }}</td>
+                                    {% endif %}
+                                </tr>
+                                <tr>
+                                    {% if data.misc_sar %}
+                                        <td class="ttl"><a href="#">SAR</a></td>
+                                        <td class="nfo" data-spec="sar-us">{{ data.misc_sar }}</td>
+                                    {% endif %}
+                                </tr>
+                                <tr>
+                                    {% if data.misc_sar_eu %}
+                                        <td class="ttl"><a href="#">SAR EU</a></td>
+                                        <td class="nfo" data-spec="sar-eu">{{ data.misc_sar_eu }}</td>
+                                    {% endif %}
+                                </tr>
+                                <tr>
+                                    {% if data.price %}
+                                        <td class="ttl"><a href="#">Price</a></td>
+                                        <td class="nfo" data-spec="price"><a href="#">{{ data.price }}</a></td>
+                                    {% endif %}
+                                </tr>
+                            {% endif %}
+                        </tbody>
+                    </table>
+
+                    <table class="table" cellspacing="0">
+                        <tbody>
+                            {% if data.test_performance or data.test_display or data.test_camera or data.test_battery_life %}
+                                <tr>
+                                    <th width="15%" rowspan="4" scope="row">Tests</th>
+                                    {% if data.test_performance %}
+                                        <td class="ttl" width="15%"><a href="#">Performance</a></td>
+                                        <td class="nfo" data-spec="tbench"> {{ data.test_performance }} </td>
+                                    {% endif %}
+                                </tr>
+                                <tr>
+                                    {% if data.test_display %}
+                                        <td class="ttl"><a href="#">Display</a></td>
+                                        <td class="nfo">
+                                            <a class="noUnd" href="#">{{ data.test_display }}</a>
+                                        </td>
+                                    {% endif %}
+                                </tr>
+                                <tr>
+                                    {% if data.test_camera %}
+                                        <td class="ttl"><a href="#">Camera</a></td>
+                                        <td class="nfo">
+                                            <a class="noUnd" href="#">{{ data.test_camera }}</a>
+                                        </td>
+                                    {% endif %}
+                                </tr>
+                                <tr>
+                                    {% if data.test_battery_life %}
+                                        <td class="ttl"><a href="#">Battery life</a></td>
+                                        <td class="nfo" data-spec="batlife">{{ data.test_battery_life }}</td>
+                                    {% endif %}
+                                </tr>
+                            {% endif %}
+                            <tr> </tr>
+                        </tbody>
+                    </table>
+
+                </div>
+
+                <div class="row">
+                    <div class="col-md-12">
+                        {% if device_prices %}
+                            <table  class=" table pricing inline widget">
+                                <h3 class="comp-heading">Pricing</h3>
+                                <tbody>
+                                    {% regroup device_prices by device_title as device_price_list %}
+                                    {% for group in device_price_list %}
+                                        <tr>
+                                            <td>{{ group.grouper }}</td>
+                                            {% for data in group.list %}
+                                                <td><a href="{{ data.site_link }}" target="_blank"><img alt="{{ data.device_title }}" src="/static/gsmapp/images/{{data.site_image}}"></a><a href="{{ data.site_link }}" target="_blank">$ {{ data.dollar_price }} </a></td>
+                                            {% endfor %}
+                                            </tr>
+                                    {% endfor %}
+                                </tbody>
+                            </table>
+                        {% endif %}
+
+                        <div class="module module-phones module-related">
+                            <h3 class="comp-heading">Similarly priced</h3>
+
+                            <ul class="clearfix">
+                                {% for data in similarly_price %}
+                                    <li>
+                                        <a class="module-phones-link" href="/{{data.product_name_id}}/{{data.product_name.product_name.split|join:"-"|lower}}/"><img src="/static/gsmapp/images/{{data.product_name.product_img}}" alt="{{ data.product_name }}">
+                                        <br>{{ data.product_name }} ${{ data.dollar_price }} </a>
+                                    </li>
+                                {% endfor %}
+                            </ul>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+
+              <div role="tabpanel" class="tab-pane fade" id="review">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="video" style="height:400px; width:100%">
+                            <iframe width="100%" height="100%" src="{{ product_review.review_video }}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                        </div>
+
+                        <div id="review-body" class="review-body"> {{ product_review.review_details|safe }} </div>
+                    </div>
+                </div>
+            </div>
+
+
+            <div role="tabpanel" class="tab-pane fade" id="compare">
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="compare-candidate">
+                            <div class="candidate-search candidate-search-2">
+                                <form class="clearfix" action="" method="get" _lpchecked="1">
+                                    <strong class="cmp-with floatLeftDisplay movecmpwith">Base Device</strong>
+                                    <br>
+                                        <input type="text" id="sSearch1" class="" name="Search1" value="" autocomplete="off">
+                                        <input type="submit" class="src-btn" value="Search">
+                                            <br>
+                                    <span>Please enter model name or part of it</span>
+                                </form>
+                            </div>
+
+                            <h3 class="comp-heading"><a href="#"><span>{{ data.product_name }}</span></a></h3>
+
+                            <div class="row">
+                                <div class="col-sm-6">
+                                        <div class="compare-media-wrap">
+                                        <img {% if data.product_img %} src="/static/gsmapp/images/{{data.product_img}}" {% else %} src="/static/gsmapp/images/default.png" {% endif %} alt="{{ data.img_alt_tag }}">
+                                    </div>
+                                </div>
+                                <div class="col-sm-6">
+                                        <ul class="compare-link-list">
+                                        <li title="Samsung Galaxy A31 phone specifications"><a href="#">Specifications</a></li>
+                                        <li title="Samsung Galaxy A31 user reviews and opinions"><a href="#">Read opinions</a></li>
+                                        <li><a href="#">Pictures</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div><!--col-md-6 end-->
+                    </div>
+                    <div class="col-md-6">
+                         <div class="compare-candidate compare-col">
+                            <div class="candidate-search candidate-search-1">
+                                <form action="" method="">
+                                    <strong class="">Compare with</strong>
+                                    
+                                    <div id="top-search">
+                                        <div class="search-area">
+                                             <input type="search" placeholder="Search For Comparison" class="sSearch2" id="sSearch2">
+                                             <input type="submit" class="src-btn" value="Search">
+                                         </div>
+                                         <div class="bottom-search-content">
+                                             <div class="row">
+                                                 
+                                                 <div class="col-md-4 col-sm-12 d-bg">
+                                                      <div class="comp_devices" id="comp_devices">
+                                                         
+                                                               <!-- ============Comparisons============  -->
+
+                                                      </div>
+                                                 </div>
+                                                 
+                                             </div>
+                                        </div>
+                                    </div>
+                                        
+                                    <span>Please enter model name or part of it</span>
+                                </form>
+
+
+                            </div>
+
+                            <h3 class="comp-heading" id="comp_name"><a href="#"><span>{{ data.product_name }}</span></a></h3>
+                                <div class="row">
+                                    <div class="col-sm-6">
+                                         <div class="compare-media-wrap">
+                                            <img {% if data.product_img %} src="/static/gsmapp/images/{{data.product_img}}" {% else %} src="/static/gsmapp/images/default.png" {% endif %} alt="{{ data.img_alt_tag }}" id="comp_img">
+                                            
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-6">
+                                         <ul class="compare-link-list">
+                                            <li title="Samsung Galaxy A31 phone specifications"><a href="#">Specifications</a></li>
+                                            <li title="Samsung Galaxy A31 user reviews and opinions"><a href="#">Read opinions</a></li>
+                                            <li><a href="#">Pictures</a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+
+                        </div>
+                    </div><!--col-md-6 end-->
+                </div><!--compare row end-->
+
+                <div class="row" style="margin-top:18px">
+                    <div class="col-md-12">
+                        <div class="compare-specs-list">
+
+                            <table class="table" cellspacing="0">
+                                <tbody>
+                                    <tr>
+                                        <th rowspan="5" width="9%">Network</th>
+                                        {% if data.network_technology %}
+                                            <td class="ttl" width="9%"><a href="#">Technology</a></td>
+                                            <td class="nfo" width="41%"><a href="#" data-spec="nettech">{{ data.network_technology }}</a></td>
+                                            <td id="network_technology" class="nfo" width="41%"><a href="#" data-spec="nettech">{{ data.network_technology }}</a></td>
+                                        {% endif %}
+                                    </tr>
+                                    <tr>
+                                        {% if data.network_2g_bands %}
+                                            <td class="ttl"><a href="#">2G bands</a></td>
+                                            <td class="nfo">{{ data.network_2g_bands }}</td>
+                                            <td id="network_2g_bands" class="nfo">{{ data.network_2g_bands }}</td>
+                                        {% endif %}
+
+                                    </tr>
+                                    <tr>
+                                        {% if data.network_3g_bands %}
+                                            <td class="ttl"><a href="#">3G bands</a></td>
+                                            <td class="nfo" data-spec="net3g">{{ data.network_3g_bands }} </td>
+                                            <td id="network_3g_bands" class="nfo" data-spec="net3g">{{ data.network_3g_bands }} </td>
+                                        {% endif %}
+                                    </tr>
+                                    <tr>
+                                        {% if data.network_4g_bands %}
+                                            <td class="ttl"><a href="#">4G bands</a></td>
+                                            <td class="nfo" data-spec="net4g">{{ data.network_4g_bands }}</td>
+                                            <td id="network_4g_bands" class="nfo" data-spec="net4g">{{ data.network_4g_bands }}</td>
+                                        {% endif %}
+                                    </tr>
+                                    <tr>
+                                        {% if data.network_speed %}
+                                            <td class="ttl"><a href="#">Speed</a></td>
+                                            <td class="nfo" data-spec="speed">{{ data.network_speed }}</td>
+                                            <td id="network_speed" class="nfo" data-spec="speed">{{ data.network_speed }}</td>
+                                        {% endif %}
+                                    </tr>
+
+                                </tbody>
+                            </table>
+
+                            <table class="table" cellspacing="0">
+                                <tbody>
+                                    <tr>
+                                        <th rowspan="2" width="9%">Launch</th>
+                                        {% if data.launch_announced %}
+                                            <td class="ttl" width="9%"><a href="#">Announced</a></td>
+                                            <td class="nfo" width="41%">{{ data.launch_announced }}</td>
+                                            <td id="launch_announced" class="nfo" width="41%">{{ data.launch_announced }}</td>
+                                        {% endif %}
+                                    </tr>
+                                    <tr>
+                                        {% if data.launch_status %}
+                                            <td class="ttl"><a href="#">Status</a></td>
+                                            <td class="nfo">{{ data.launch_status }}</td>
+                                            <td id="launch_status" class="nfo">{{ data.launch_status }}</td>
+                                        {% endif %}
+                                    </tr>
+                                </tbody>
+                            </table>
+
+                            <table class="table" cellspacing="0">
+                                <tbody>
+                                    {% if data.body_dimensions or data.body_weight or data.body_build or data.body_sim %}
+                                        <tr>
+                                            <th rowspan="6" width="9%">Body</th>
+
+                                            {% if data.body_dimensions %}
+                                                <td class="ttl" width="9%"><a href="#">Dimensions</a></td>
+                                                <td class="nfo" width="41%">{{ data.body_dimensions }}</td>
+                                                <td id="body_dimensions" class="nfo" width="41%">{{ data.body_dimensions }}</td>
+                                            {% endif %}
+                                        </tr>
+                                        <tr>
+                                            {% if data.body_weight %}
+                                                <td class="ttl"><a href="#">Weight</a></td>
+                                                <td class="nfo">{{ data.body_weight }}</td>
+                                                <td id="body_weight" class="nfo">{{ data.body_weight }}</td>
+                                            {% endif %}
+                                        </tr>
+
+                                        <tr>
+                                            {% if data.body_build %}
+                                                <td class="ttl"><a href="#">Build</a></td>
+                                                <td class="nfo" data-spec="build">{{ data.body_build }}</td>
+                                                <td id="body_build" class="nfo" data-spec="build">{{ data.body_build }}</td>
+                                            {% endif %}
+                                        </tr>
+
+                                        <tr>
+                                            {% if data.body_sim %}
+                                                <td class="ttl"><a href="#">SIM</a></td>
+                                                <td class="nfo" data-spec="sim">{{ data.body_sim }}</td>
+                                                <td id="body_sim" class="nfo" data-spec="sim">{{ data.body_sim }}</td>
+                                            {% endif %}
+                                        </tr>
+                                        
+                                    {%endif%}
+                                </tbody>
+                            </table>
+
+                            <table class="table" cellspacing="0">
+                                <tbody>
+                                    {% if data.display_type or data.display_size or data.display_resolution or data.display_protection %}
+                                        <tr>
+                                            <th rowspan="5" width="9%">Display</th>
+                                            
+                                            {% if data.display_type %}
+                                                <td class="ttl" width="9%"><a href="#">Type</a></td>
+                                                <td class="nfo" width="41%">{{ data.display_type }}</td>
+                                                <td id="display_type" class="nfo" width="41%">{{ data.display_type }}</td>
+                                            {% endif %}
+                                        </tr>
+                                        <tr>
+                                            {% if data.display_size %}
+                                                <td class="ttl"><a href="#">Size</a></td>
+                                                <td class="nfo">{{ data.display_size }}</td>
+                                                <td id="display_size" class="nfo">{{ data.display_size }}</td>
+                                            {% endif %}
+                                        </tr>
+                                        <tr>
+                                            {% if data.display_resolution %}
+                                                <td class="ttl"><a href="#">Resolution</a></td>
+                                                <td class="nfo" data-spec="displayresolution">{{ data.display_resolution }}</td>
+                                                <td id="display_resolution" class="nfo" data-spec="displayresolution">{{ data.display_resolution }}</td>
+                                            {% endif %}
+                                        </tr>
+                                        <tr>
+                                            {% if data.display_protection %}
+                                                <td class="ttl"><a href="#">Protection</a></td>
+                                                <td class="nfo" data-spec="displayprotection">{{ data.display_protection }}</td>
+                                                <td id="display_protection" class="nfo" data-spec="displayprotection">{{ data.display_protection }}</td>
+                                            {% endif %}
+                                        </tr>
+                                    {%endif%}
+                                </tbody>
+                            </table>
+
+                            <table class="table" cellspacing="0">
+                                <tbody>
+                                    {% if data.platform_os or data.platform_chipset or data.platform_cpu or data.platform_gpu %}
+
+                                        <tr>
+                                            <th rowspan="4" width="9%">Platform</th>
+
+                                            {% if data.platform_os %}
+                                                <td class="ttl" width="9%"><a href="#">OS</a></td>
+                                                <td class="nfo" width="41%">{{ data.platform_os }}</td>
+                                                <td id="platform_os" class="nfo" width="41%">{{ data.platform_os }}</td>
+                                            {% endif %}
+
+                                        </tr>
+                                        <tr>
+                                            {% if data.platform_chipset %}
+                                                <td class="ttl"><a href="#">Chipset</a></td>
+                                                <td class="nfo" data-spec="chipset">{{ data.platform_chipset }}</td>
+                                                <td id="platform_chipset" class="nfo" data-spec="chipset">{{ data.platform_chipset }}</td>
+                                            {% endif %}
+                                        </tr>
+                                        <tr>
+                                            {% if data.platform_cpu %}
+                                                <td class="ttl"><a href="#">CPU</a></td>
+                                                <td class="nfo" data-spec="cpu">{{ data.platform_cpu }}</td>
+                                                <td id="platform_cpu" class="nfo" data-spec="cpu">{{ data.platform_cpu }}</td>
+                                            {% endif %}
+                                        </tr>
+                                        <tr>
+                                            {% if data.platform_gpu %}
+                                                <td class="ttl"><a href="#">GPU</a></td>
+                                                <td class="nfo" data-spec="gpu">{{ data.platform_gpu }}</td>
+                                                <td id="platform_gpu" class="nfo" data-spec="gpu">{{ data.platform_gpu }}</td>
+                                            {% endif %}
+                                        </tr>
+                                    {%endif%}
+                                </tbody>
+                            </table>
+
+                            <table class="table" cellspacing="0">
+                                <tbody>
+                                    {% if data.memory_card_slot or data.memory_internal %}
+
+                                        <tr>
+                                            <th rowspan="5" width="9%">Memory</th>
+                                            {% if data.memory_card_slot %}
+                                                <td class="ttl" width="9%"><a href="#">Card slot</a></td>
+                                                <td class="nfo" width="41%">{{ data.memory_card_slot }}</td>
+                                                <td id="memory_card_slot" class="nfo" width="41%">{{ data.memory_card_slot }}</td>
+                                            {% endif %}
+                                        </tr>
+
+                                        <tr>
+                                            {% if data.memory_internal %}
+                                                <td class="ttl"><a href="#">Internal</a></td>
+                                                <td class="nfo" data-spec="internalmemory">{{ data.memory_internal }}</td>
+                                                <td id="memory_internal" class="nfo" data-spec="internalmemory">{{ data.memory_internal }}</td>
+                                            {% endif %}
+                                        </tr>
+
+                                    {% endif %}
+                                </tbody>
+                            </table>
+
+                            <table class="table" cellspacing="0">
+                                <tbody>
+                                    {% if data.main_camera_type or data.main_cam_type_des or data.main_camera_features or data.main_camera_video %}
+
+                                        <tr>
+                                            <th rowspan="3" width="9%">Main Camera</th>
+                                            {% if data.main_camera_type %}
+                                                <td class="ttl" width="9%"><a href="#">Modules</a></td>
+                                                <td class="nfo" width="41%"><a href="#">{{ data.main_cam_type_des }}</a></td>
+                                                <td id="main_cam_type_des" class="nfo" width="41%">{{ data.main_cam_type_des }}</td>
+                                            {% endif %}
+                                        </tr>
+                                        <tr>
+                                            {% if data.main_camera_features %}
+                                                <td class="ttl"><a href="#">Features</a></td>
+                                                <td class="nfo" data-spec="cam1features">{{ data.main_camera_features }}</td>
+                                                <td id="main_camera_features" class="nfo" data-spec="cam1features">{{ data.main_camera_features }}</td>
+                                            {% endif %}
+                                        </tr>
+
+                                        <tr>
+                                            {% if data.main_camera_video %}
+                                                <td class="ttl"><a href="#">Video</a></td>
+                                                <td class="nfo">{{ data.main_camera_video }}</td>
+                                                <td id="main_camera_video" class="nfo">{{ data.main_camera_video }}</td>
+
+                                            {% endif %}
+                                        </tr>
+                                    {%endif%}
+                                </tbody>
+                            </table>
+
+                            <table class="table" cellspacing="0">
+                                <tbody>
+                                    {% if data.selfie_camera_type or data.selfie_cam_type_des or data.main_camera_features %}
+
+                                        <tr>
+                                            <th rowspan="4" width="9%">Selfie Camera</th>
+                                            {% if data.selfie_camera_type %}
+                                                <td class="ttl" width="9%"><a href="#">{{ data.selfie_camera_type }}</a></td>
+                                                <td class="nfo" width="41%">{{ data.selfie_cam_type_des }}</td>
+                                                <td id="selfie_cam_type_des" class="nfo" width="41%">{{ data.selfie_cam_type_des }}</td>
+                                            {% endif %}
+
+                                        </tr>
+
+                                        <tr>
+                                            {% if data.selfie_camera_features %}
+                                                <td class="ttl"><a href="#">Features</a></td>
+                                                <td class="nfo" >{{ data.selfie_camera_features }}</td>
+                                                <td id="selfie_camera_features" class="nfo">{{ data.selfie_camera_features }}</td>
+                                            {% endif %}
+                                        </tr>
+                                        <tr>
+                                            {% if data.selfie_camera_video %}
+                                                <td class="ttl" width="9%"><a href="#">Video</a></td>
+                                                <td class="nfo" width="41%">{{ data.selfie_camera_video }}</td>
+                                                <td id="selfie_camera_video" class="nfo" width="41%">{{ data.selfie_camera_video }}</td>
+                                            {% endif %}
+                                        </tr>
+                                    {%endif%}
+                                </tbody>
+                            </table>
+
+                            <table class="table" cellspacing="0">
+                                <tbody>
+                                    {% if data.selfie_camera_type or data.selfie_cam_type_des or data.main_camera_features %}
+
+                                        <tr>
+                                            <th rowspan="3" width="9%">Sound</th>
+                                            {% if data.sound_loudspeaker %}
+                                                <td class="ttl" width="9%"><a href="#">Loudspeaker</a> </td>
+                                                <td class="nfo" width="41%">{{ data.sound_loudspeaker }}</td>
+                                                <td id="sound_loudspeaker" class="nfo" width="41%">{{ data.sound_loudspeaker }}</td>
+                                            {% endif %}
+
+                                        </tr>
+
+                                        <tr>
+                                            {% if data.sound_3_5mm_jack %}
+                                                <td class="ttl"><a href="#">3.5mm jack</a> </td>
+                                                <td class="nfo">{{ data.sound_3_5mm_jack }}</td>
+                                                <td id="sound_3_5mm_jack" class="nfo">{{ data.sound_3_5mm_jack }}</td>
+                                            {% endif %}
+
+                                        </tr>
+                                        
+                                    {%endif%}
+                                </tbody>
+                            </table>
+
+                            <table class="table" cellspacing="0">
+                                <tbody>
+                                    {% if data.comms_wlan or data.comms_bluetooth or data.comms_gps or data.comms_nfc or data.comms_radio %}
+
+                                        <tr>
+                                            <th rowspan="9" width="9%">Comms</th>
+
+                                            {% if data.comms_wlan %}
+                                                <td class="ttl" width="9%"><a href="#">WLAN</a></td>
+                                                <td class="nfo" width="41%">{{ data.comms_wlan }}</td>
+                                                <td id="comms_wlan" class="nfo" width="41%">{{ data.comms_wlan }}</td>
+                                            {% endif %}
+                                        </tr>
+                                        <tr>
+                                            {% if data.comms_bluetooth %}
+                                                <td class="ttl"><a href="#">Bluetooth</a></td>
+                                                <td class="nfo" data-spec="bluetooth">{{ data.comms_bluetooth }}</td>
+                                                <td id="comms_bluetooth" class="nfo" data-spec="bluetooth">{{ data.comms_bluetooth }}</td>
+                                            {% endif %}
+                                        </tr>
+                                        <tr>
+                                            {% if data.comms_gps %}
+                                                <td class="ttl"><a href="#">GPS</a></td>
+                                                <td class="nfo" data-spec="gps">{{ data.comms_gps }}</td>
+                                                <td id="comms_gps" class="nfo" data-spec="gps">{{ data.comms_gps }}</td>
+                                            {% endif %}
+                                        </tr>
+                                        <tr>
+                                            {% if data.comms_nfc %}
+                                                <td class="ttl"><a href="#">NFC</a></td>
+                                                <td class="nfo" data-spec="nfc">{{ data.comms_nfc }}</td>
+                                                <td id="comms_nfc" class="nfo" data-spec="nfc">{{ data.comms_nfc }}</td>
+                                            {% endif %}
+                                        </tr>
+
+                                        <tr>
+                                            {% if data.comms_radio %}
+                                                <td class="ttl"><a href="#">Radio</a></td>
+                                                <td class="nfo" data-spec="radio">{{ data.comms_radio }}</td>
+                                                <td id="comms_radio" class="nfo" data-spec="radio">{{ data.comms_radio }}</td>
+                                            {% endif %}
+                                        </tr>
+                                        <tr>
+                                            {% if data.comms_usb %}
+                                                <td class="ttl"><a href="#">USB</a></td>
+                                                <td class="nfo" data-spec="usb">{{ data.comms_usb }}</td>
+                                                <td id="comms_usb" class="nfo" data-spec="usb">{{ data.comms_usb }}</td>
+                                            {% endif %}
+                                        </tr>
+                                    {%endif%}
+                                </tbody>
+                            </table>
+
+                            <table class="table" cellspacing="0">
+                                <tbody>
+                                    {% if data.features_sensors %}
+                                        <tr>
+                                            <th width="9%" rowspan="4" scope="row">Features</th>
+                                            <td class="ttl" width="9%"><a href="#">Sensors</a></td>
+                                            <td class="nfo" width="41%">{{ data.features_sensors }}</td>
+                                            <td id="features_sensors" class="nfo" width="41%">{{ data.features_sensors }}</td>
+                                        </tr>
+
+                                        
+                                    {%endif%}
+                                </tbody>
+                            </table>
+
+                            <table class="table" cellspacing="0">
+                                <tbody>
+                                    {% if data.battery_description or data.battery_charging or data.battery_talk_time or data.battery_music_play %}
+
+                                        <tr>
+                                            <th rowspan="5" width="9%">Battery</th>
+                                            {% if data.battery_type %}
+                                                <td class="ttl" width="9%">{{ data.battery_type }}</td>
+                                                <td class="nfo" width="41%">{{ data.battery_description }}</td>
+                                                <td id="battery_description" class="nfo" width="41%">{{ data.battery_description }}</td>
+                                            {% endif %}
+                                        </tr>
+                                        <tr>
+                                            {% if data.battery_charging %}
+                                                <td class="ttl" width="9%"><a href="#">Charging</a></td>
+                                                <td class="nfo" width="41%">{{ data.battery_charging }}</td>
+                                                <td id="battery_charging" class="nfo" width="41%">{{ data.battery_charging }}</td>
+                                            {% endif %}
+                                        </tr>
+                                        <tr>
+                                            {% if data.battery_talk_time %}
+                                                <td class="ttl"><a href="#">Talk Time</a></td>
+                                                <td class="nfo">{{ data.battery_talk_time }}</td>
+                                                <td id="battery_talk_time" class="nfo">{{ data.battery_talk_time }}</td>
+                                            {% endif %}
+                                        </tr>
+                                        <tr>
+                                            {% if data.battery_music_play %}
+                                                <td class="ttl"><a href="#">Music Play</a></td>
+                                                <td class="nfo">{{ data.battery_music_play }}</td>
+                                                <td id="battery_music_play" class="nfo">{{ data.battery_music_play }}</td>
+                                            {% endif %}
+                                        </tr>
+
+                                    {%endif%}
+                                </tbody>
+                            </table>
+
+                            <table class="table" cellspacing="0">
+                                <tbody>
+                                    {% if data.misc_colors or data.misc_models or data.misc_sar or data.misc_sar_eu or data.price %}
+                                    <tr>
+                                        <th width="9%" rowspan="5" scope="row">Misc</th>
+                                        {% if data.misc_colors %}
+                                            <td class="ttl" width="9%"><a href="#">Colors</a></td>
+                                            <td class="nfo" width="41%">{{ data.misc_colors }}</td>
+                                            <td id="misc_colors" class="nfo" width="41%">{{ data.misc_colors }}</td>
+                                        {% endif %}
+                                    </tr>
+                                    <tr>
+                                        {% if data.misc_models %}
+                                            <td class="ttl"><a href="#">Models</a></td>
+                                            <td class="nfo" data-spec="models">{{ data.misc_models }}</td>
+                                            <td id="misc_models" class="nfo" data-spec="models">{{ data.misc_models }}</td>
+                                        {% endif %}
+                                    </tr>
+                                    <tr>
+                                        {% if data.misc_sar %}
+                                            <td class="ttl"><a href="#">SAR</a></td>
+                                            <td class="nfo" data-spec="sar-us">{{ data.misc_sar }}</td>
+                                            <td id="misc_sar" class="nfo" data-spec="sar-us">{{ data.misc_sar }}</td>
+                                        {% endif %}
+                                    </tr>
+                                    <tr>
+                                        {% if data.misc_sar_eu %}
+                                            <td class="ttl"><a href="#">SAR EU</a></td>
+                                            <td class="nfo" data-spec="sar-eu">{{ data.misc_sar_eu }}</td>
+                                            <td id="misc_sar_eu" class="nfo" data-spec="sar-eu">{{ data.misc_sar_eu }}</td>
+                                        {% endif %}
+                                    </tr>
+                                    <tr>
+                                        {% if data.price %}
+                                            <td class="ttl"><a href="#">Price</a></td>
+                                            <td class="nfo" data-spec="price"><a href="#">{{ data.price }}</a></td>
+                                            <td id="price" class="nfo" data-spec="price"><a href="#">{{ data.price }}</a></td>
+                                        {% endif %}
+                                    </tr>
+                                {% endif %}
+
+                                </tbody>
+                            </table>
+
+                        </div>
+                    </div>
+                </div>
+
+                <!---->
+            </div>
+
+
+            <!---->
+            <!---->
+            <!---->
+            <div role="tabpanel" class="tab-pane fade" id="3Dview">
+                {% for data in product_3d_view %}
+                    <div style="height:400px; width:100%">
+                        <img src="/static/gsmapp/images/{{data.three_d_img}}" alt="3d-view" class="img-responsive">
+                    </div>
+                {% endfor %}
+            </div>
+
+            <div role="tabpanel" class="tab-pane fade" id="comment">
+                <div id="user-comments" class="box s3 nobg">
+                    <h2>{{ data.product_name }}</h2>
+
+                    {% for data in user_comments %}
+                        <div class="user-thread">
+                            <div class="uavatar"><span class="avatar-box" style="background-color: #549fc8">E</span></div>
+                            <ul class="uinfo2">
+                                <li class="uname2">{{ data.full_name }}</li>
+                                <li class="upost">
+                                    <time>{{ data.added_date }}</time>
+                                </li>
+                            </ul>
+                            <p class="uopin">{{ data.user_comment }}</p>
+
+                            <ul class="uinfo">
+                                <li class="ureply">
+                                    <span title="Reply to this post">
+                                    <a href="#">Reply</a></span>
+                                </li>
+                            </ul>
+                        </div>
+                    {% endfor %}
+
+
+                      <!-- ADD comments -->
+                <div class="add-comments padding-top-20">
+                    <h6>Leave a Comment</h6>
+
+                    <!-- FORM -->
+                    <form method="POST"> {% csrf_token %}
+                        <ul class="row">
+                            <li class="col-sm-6">
+                                <label>Name
+                                    <input type="text" class="form-control" name="user_name" placeholder="">
+                                </label>
+                            </li>
+                            <li class="col-sm-6">
+                                <label>Email
+                                    <input type="text" class="form-control" name="user_email" placeholder="">
+                                </label>
+                            </li>
+                            <li class="col-sm-12">
+                                <label>Message
+                                    <textarea class="form-control" rows="5" name="user_comment" placeholder=""></textarea>
+                                </label>
+                            </li>
+                            <li class="col-sm-12 text-left">
+                                <button type="submit" class="btn-round Subscriptions2">Post Comment</button>
+                            </li>
+                        </ul>
+                    </form>
+                </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<script src="{% static 'gsmapp/js/vendors/jquery/jquery.min.js' %}"></script>
+    <script src="{% static 'gsmapp/js/vendors/wow.min.js' %}"></script>
+    <script src="{% static 'gsmapp/js/vendors/bootstrap.min.js' %}"></script>
+    <script src="{% static 'gsmapp/js/vendors/own-menu.js' %}"></script>
+    <script src="{% static 'gsmapp/js/vendors/jquery.sticky.js' %}"></script>
+    <script src="{% static 'gsmapp/js/vendors/owl.carousel.min.js' %}"></script>
+
+    <!-- SLIDER REVOLUTION  -->
+    <script type="text/javascript" src="{% static 'gsmapp/rs-plugin/js/jquery.tp.t.min.js' %}"></script>
+    <script type="text/javascript" src="{% static 'gsmapp/rs-plugin/js/jquery.tp.min.js' %}"></script>
+    <script src="{% static 'gsmapp/js/main.js' %}"></script>
+    <!-- search -->
+    <script>
+         $(function() {
+            $(".sSearch2").keypress(function() {
+                $(".bottom-search-content").show();
+            }).click(function() {
+                if($('.sSearch2').val().length!=0){
+                    $(".bottom-search-content").show('slow');
+                    // =====================
+                    
+                        var v = $(this).val();
+                        searchForCompare(v);
+                    
+                    // =====================
+                }
+            });
+            $(document).click(function (e) {
+                if($(e.target).closest('.bottom-search-content').length || $(e.target).closest('.sSearch2').length)
+                    return;
+                $(".bottom-search-content").hide();
+             });
+        });
+    </script>
+
+    <!-- AJAX Setup -->
+    
+    <script src="https://cdn.jsdelivr.net/npm/js-cookie@rc/dist/js.cookie.min.js"></script>	
+    <script type="text/javascript">
+            var csrftoken = Cookies.get('csrftoken');
+            // console.log(csrftoken);
+            function csrfSafeMethod(method) {
+                // these HTTP methods do not require CSRF protection
+                return (/^(GET|HEAD|OPTIONS|TRACE)$/.test(method));
+            }
+            $.ajaxSetup({
+                crossDomain: false, // obviates need for sameOrigin test
+                beforeSend: function(xhr, settings) {
+                    if (!csrfSafeMethod(settings.type)) {
+                        xhr.setRequestHeader("X-CSRFToken", csrftoken);
+                    }
+                }
+            });
+    </script>
+    <!-- end ajax setup -->
+
+    <script>
+        $('#sSearch2').on('input', function() {
+            var v = $(this).val();
+            // console.log(v);
+            searchForCompare(v);
+        });
+    </script>
+
+    <script>
+         searchForCompare = function(v) {
+            // console.log(v);
+            $.post("{% url 'search_data_ajax' %}",
+            {
+                data: v
+            },
+            function(data){
+                var txt = '<div class="comp_devices" id="comp_devices">';
+                
+                data = JSON.parse(data)
+                for (var i = 0; i < data.length; i++) {
+                    txt+= '<a onClick = "comp_data_ajax(\'' + data[i][2] + '\'); return false;" href="#">';
+                    txt+= '<div class="single-item">';
+                    txt+= '<img src="/static/gsmapp/images/'+data[i][0]+'" alt="Device" style="display">';
+                    txt+= '<div class="title">'+data[i][1]+'</div>';
+                    txt+= '</div>';
+                    txt+= '</a>';
+                     
+                }
+                txt+='</div>';
+
+                $('#comp_devices').html(txt);
+                // console.log(txt);
+            });               
+        }
+    </script>
+
+
+<script>
+    
+    function comp_data_ajax(temp) {
+        
+        $.post("{% url 'compare_product' %}",
+            {
+                data: temp
+            },
+            function(data){
+                                
+                data = JSON.parse(data)[0]
+                var keys = Object.keys(data)
+                // console.log(data);
+                // console.log(data[keys[9]]);
+                c_img = '/static/gsmapp/images/'+data['product_img']
+                $(comp_img).attr("src", c_img);
+
+                $('#comp_name').html(data['product_name']);
+                for(var i = 0; i < keys.length;i++){
+                    var a = '#'+keys[i]
+                    // console.log( $(a).html(txt));
+                    $(a).html(data[keys[i]]);
+                }
+                $(".bottom-search-content").hide();
+
+            }); 
+            
+    }
+</script>
+
+{% endblock %}

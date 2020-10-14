@@ -1,0 +1,68 @@
+{% extends 'gsmapp/adminpanel/admin_base.html' %}
+{% block title %} Product Review Details | GSM Riders {% endblock %}
+{% load static %}
+{% block content %}
+ 
+<div class="kt-portlet">
+    <div class="kt-portlet__body">
+        {% if messages %}
+            <div class="messages">
+                {% for message in messages %}
+                    <p{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</p>
+                {% endfor %}
+            </div>
+        {% endif %}
+        <div class="kt-widget kt-widget--user-profile-3">
+            <table class="table table-striped table-bordered" style="width:100%">
+                <thead>
+                    <tr>
+                        <th class="text-center">SL</th>
+                        <th>Category Name</th> 
+                        <th>Product Name</th> 
+                        <th>Brand Name</th> 
+                        <th>Image</th> 
+                        <th>Added Date</th> 
+                        <th>Status</th>  
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for data in product %}
+                        <tr>
+                            <td class="text-center"> {{ forloop.counter }}</td>
+                            <td> {{ data.cat_name }} </td>
+                            <td> {{ data.product_name }} </td>
+                            <td> {{ data.brand_name }} </td>
+                            <td> <img {% if data.product_img %} src="/static/gsmapp/images/{{ data.product_img }}" {% else %} src="/static/gsmapp/images/default.png" {% endif %} style="height:40px;"> </td>
+                            <td> {{ data.added_date }}</td>
+                            <td> {% if data.status %} Active {% else %} <span style="color:red">Inactive</span>{% endif %} </td> 
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+
+            {% if not product_review %}
+                <h1>
+                    <a href="/gsm/{{product_id}}/add-product-review/">Add Product Review</a>
+                </h1>
+            {% else %}
+                <h1>
+                    <a href="/gsm/{{product_review.pk}}/edit-product-review/">Edit Product Review</a>
+                </h1> 
+ 
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="video" style="height:400px; width:100%">
+                            <iframe width="100%" height="100%" src="{{ product_review.review_video }}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                        </div>
+
+                        <div id="review-body" class="review-body"> {{ product_review.review_details|safe }} </div>
+                    </div>
+                </div> 
+                
+            {% endif %} 
+        </div>
+
+    </div>
+</div>
+
+{% endblock %}

@@ -1,0 +1,31 @@
+{% extends 'gsmapp/pages/base.html' %}
+{% block title %} Blogs | GSM Riders {% endblock %}
+{% block ogimage %}/static/gsmapp/images/{{ blog_list.first.blog_img }}{% endblock %}
+{% load static %}
+{% block content %}
+
+    {% for data in blog_list %}
+        <div class="row" style="padding: 0 5px;">
+            <a href="/{{data.blog_slug}}/">
+            <div class="news-item">
+                <div class="col-lg-4 col-md-6">
+                    <div class="news-item-media-wrap1 left">
+                        <img {% if data.blog_img %} src="/static/gsmapp/images/{{data.blog_img}}" {% else %} src="/static/gsmapp/images/default.png" {% endif %} class="img-responsive">
+                    </div>
+                </div>
+                <div class="col-lg-8 col-md-6">
+                    <div class="content">
+                        <h3>{{ data.blog_title}}</h3>
+                        <p>{{ data.blog_details|truncatechars:"100"|safe }}</p>
+                        <p class="meta-line"></p>
+                        <div class="meta-line">
+                            <span class="meta-item-time pull-right"><i class="head-icon icon-clock2"></i>{{ current_datetime|timeuntil:data.added_date }} ago</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            </a>
+        </div>
+    {% endfor %}
+
+{% endblock %}

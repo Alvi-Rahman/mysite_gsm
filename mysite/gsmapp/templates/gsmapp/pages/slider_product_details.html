@@ -1,0 +1,24 @@
+{% extends 'gsmapp/pages/base.html' %}
+{% block title %} {{ slider_product.slider_name }} | GSM Riders {% endblock %}
+{% load static %}
+{% load custom_tags %}
+{% block content %}
+ 
+
+<div class="row">
+    <div class="news-items">
+        <div class="col-lg-12 col-md-12">
+            <div class="news-item-media-wrap1 left">
+                <img {% if slider_product.slider_img %} src="/static/gsmapp/images/{{slider_product.slider_img}}" {% else %} src="/static/gsmapp/images/default.png" {% endif %} class="img-responsive" style="width: 100%; height:auto;">
+            </div>
+        </div>
+        <div class="col-md-12 col-sm-12">
+            <div class="content">
+                <h3>{{ slider_product.slider_name }}</h3>
+                <p>{{ slider_product.slider_details|blog_details|safe }}</p> 
+            </div>  
+        </div>
+    </div>
+</div>
+ 
+{% endblock %}   
